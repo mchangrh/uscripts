@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         sb.ltn.fi refresh segment
 // @namespace    mchang.name
-// @version      1.1.2
+// @version      1.1.3
 // @description  Refresh a single segment
 // @author       mchangrh
 // @match        https://sb.ltn.fi/*
 // @icon         https://sb.ltn.fi/static/browser/logo.png
 // @grant        GM_xmlhttpRequest
-// @updateURL    https://gist.github.com/mchangrh/c693f8e1de2b6a5067ae9d5e994f6758/raw/sbltnfi-refresh.user.js
-// @downloadURL  https://gist.github.com/mchangrh/c693f8e1de2b6a5067ae9d5e994f6758/raw/sbltnfi-refresh.user.js
+// @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-refresh.user.js
+// @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-refresh.user.js
 // ==/UserScript==
 
 function refreshRow(event) {

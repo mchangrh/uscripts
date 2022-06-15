@@ -5,6 +5,8 @@
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
+// @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/clickable-starttime-fork.user.js
+// @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/clickable-starttime-fork.user.js
 // @grant        none
 // ==/UserScript==
 
