@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi imprecise times
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  Make all times on sb.ltn.fi imprecise
 // @author       mchangrh
 // @match        https://sb.ltn.fi/*
@@ -15,7 +15,6 @@
 const reduceTime = time => time.replace(/(?<=\.\d+)0+$/g, '');
 
 function findTimes() {
-  console.log('start reduceTimes')
   const table = document.querySelector("table");
   const headers = [...table.querySelectorAll("thead th")].map((item) =>
     item.textContent.trim()
@@ -26,11 +25,8 @@ function findTimes() {
   if (startIndex === -1) return;
   table.querySelectorAll("tbody tr").forEach((row) => {
     for (const index of [startIndex, endIndex, lengthIndex]) {
-      console.log(index)
       const cell = row.children[index];
-      console.log(cell)
       const oldValue = cell.innerText
-      console.log(oldValue)
       cell.innerText = reduceTime(oldValue);
     }
   });
