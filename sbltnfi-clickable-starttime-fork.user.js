@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.0
+// @version      1.1.1
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 const videoRegex = new RegExp(/(?:(?:video\/)|(?:videoid=))([0-9A-Za-z_-]{11})/);
-const findVideoID = (str) => str.match(videoRegex)[1];
+const findVideoID = (str) => str.match(videoRegex)?.[1];
 let videoId = findVideoID(window.location.href);
 
 function create() {
@@ -27,6 +27,7 @@ function create() {
     if (videoIdColumnIndex != -1) {
       videoId = row.children[videoIdColumnIndex].textContent.trim().slice(0, -3);
     }
+    if (!videoId) return;
     const UUID = row.children[UUIDColumnIndex].querySelector("textarea").textContent.trim()
     const cellEl = row.children[startColumnIndex];
     // check for existing children
