@@ -11,3 +11,6 @@
 
 [`sbltnfi-imprecise-times.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-imprecise-times.user.js)
 > Removes trailing zeros from start, end and length times
+
+[`sbltnfi-preset-video-link.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-preset-video-link.user.js)
+> Fork of [Deedit's Script](https://gist.github.com/FlorianZahn/785599a860328fae0724ad5b2b3f7879) with preset search parameters
