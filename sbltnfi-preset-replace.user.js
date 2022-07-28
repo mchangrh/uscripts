@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi preset redirect + replace
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  make sure all sbltnfi links are filtered appropiately - redirect or replace hrefs
 // @author       michael@mchang.name
 // @match        https://sb.ltn.fi/video/*
@@ -34,7 +34,9 @@ function substitute(url) {
     : null
   if (!filter) return false
   const newURL = new URL(url)
-  newURL.search = new URLSearchParams(filter)
+  const newSearchParams = new URLSearchParams(filter)
+  if (!newSearchParams.toString().length) return false // don't infinite loop if no params specified
+  newURL.search = newSearchParams
   return newURL.toString()
 }
 
