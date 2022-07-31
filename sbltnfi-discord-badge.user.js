@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord badge
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  Indicates if a SB user is on discord
 // @author       mchangrh
 // @match        https://sb.ltn.fi/userid/*
@@ -10,6 +10,18 @@
 // @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-discord-badge.user.js
 // @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-discord-badge.user.js
 // ==/UserScript==
+
+const AUTH = "tlB7XLNX3b33nbnx01hw"
+
+function lookupUser (SBID) {
+  GM_xmlhttpRequest({
+    method: "GET",
+    url: `https://mongo.mchang.xyz/sb-vip/discord?auth=${AUTH}&sbID=${SBID}`,
+    timeout: 1000,
+    onload: (res) => addBadge(res.status === 200),
+    onerror: (res) => addBadge(false)
+  })
+}
 
 const discordBadge = document.createElement("img")
 discordBadge.src = "https://cdn.jsdelivr.net/gh/mchangrh/cdn/discord-badge.svg"
@@ -26,17 +38,6 @@ function addBadge (onDiscord) {
   const username = header.children[0]
   if (onDiscord) username.appendChild(spanElem)
 }
-
-const AUTH = "tlB7XLNX3b33nbnx01hw"
-
-const lookupUser = (SBID) =>
-  GM_xmlhttpRequest({
-    method: "GET",
-    url: `https://mongo.mchang.xyz/sb-vip/discord?auth=${AUTH}&sbID=${SBID}`,
-    timeout: 1000,
-    onload: (res) => addBadge(res.status === 200),
-    onerror: (res) => addBadge(false)
-  })
 
 (function () {
   "use strict"
