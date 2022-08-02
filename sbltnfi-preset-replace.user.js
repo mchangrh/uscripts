@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi preset redirect + replace
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      2.0.0
 // @description  make sure all sbltnfi links are filtered appropiately - redirect or replace hrefs
 // @author       michael@mchang.name
 // @match        https://sb.ltn.fi/video/*
@@ -14,16 +14,16 @@
 // ==/UserScript==
 
 // custom filters for SBB
-const videoFilter = new URLSearchParams({
+const videoFilter = {
   "votes_min": 0,
   "views_min": 1,
   "sort": "starttime"
-})
+}
 
-const userFilter = new URLSearchParams({
+const userFilter = {
   "votes_min": 0,
   "views_min": 1
-})
+}
 
 function substitute(url) {
   // check which endpoint
@@ -34,10 +34,13 @@ function substitute(url) {
     : null
   if (!filter) return false
   const newURL = new URL(url)
-  const newSearchParams = new URLSearchParams(filter)
-  if (!newSearchParams.toString().length) return false // don't infinite loop if no params specified
-  newURL.search = newSearchParams
-  return newURL.toString()
+  const params = Object.entries(filter)
+  if (params.length) return false // don't infinite loop if no params specified
+  for ([key, value] of params)
+    if (!newURL.searchParams.has(key))
+      newURL.searchParams.set(key, value)
+  const dest = newURL.toString()
+  return dest.length != url.length ? dest : false // only redirect if difference in URL
 }
 
 function redirect() {
