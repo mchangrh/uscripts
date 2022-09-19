@@ -21,5 +21,8 @@
 [`sbltnfi-discord-badge.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-discord-badge.user.js)
 > Add Discord badge to any users that are registered with sb-slash on sb.ltn.fi
 
+[`yt-warn-reqseg.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-warn-reqseg.user.js)
+> Adds a very big, red and annoying warning at the top of the screen with requiredSegment is present
+
 [`sbltnfi-it-videotitle.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-it-videotitle.user.js)
 > Fork of [TheJzoli's Script](https://gist.github.com/TheJzoli/8a4cd979d433b7359cdf61c238bc0181) using innerTube instead of public invidious instances
