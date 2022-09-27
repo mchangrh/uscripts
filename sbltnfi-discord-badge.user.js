@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord badge
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      1.0.2
 // @description  Indicates if a SB user is on discord
 // @author       mchangrh
 // @match        https://sb.ltn.fi/userid/*
-// @icon         https://cdn.jsdelivr.net/gh/mchangrh/cdn/discord-badge.png
+// @icon         https://cdn.mchang.xyz/uscript/discord-badge.png
 // @grant        GM_xmlhttpRequest
 // @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-discord-badge.user.js
 // @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-discord-badge.user.js
@@ -24,7 +24,7 @@ function lookupUser (SBID) {
 }
 
 const discordBadge = document.createElement("img")
-discordBadge.src = "https://cdn.jsdelivr.net/gh/mchangrh/cdn/discord-badge.svg"
+discordBadge.src = "https://cdn.mchang.xyz/uscript/discord-badge.svg"
 discordBadge.style.height = "1em"
 
 const spanElem = document.createElement("span");
