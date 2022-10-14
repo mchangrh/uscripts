@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord badge
 // @namespace    mchang.name
-// @version      1.0.2
+// @version      1.0.3
 // @description  Indicates if a SB user is on discord
 // @author       mchangrh
 // @match        https://sb.ltn.fi/userid/*
@@ -34,7 +34,7 @@ spanElem.appendChild(discordBadge)
 
 function addBadge (onDiscord) {
   // scope to header
-  const header = document.querySelector("div.row.mt-2 > .col > .list-group")
+  const header = document.querySelector("div.row.mt-2 > .col-auto > .list-group")
   const username = header.children[0]
   if (onDiscord) username.appendChild(spanElem)
 }
