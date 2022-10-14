@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.1
+// @version      1.1.2
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -21,7 +21,7 @@ function create() {
   );
   const startColumnIndex = headers.indexOf('Start');
   const UUIDColumnIndex = headers.indexOf('UUID');
-  const videoIdColumnIndex = headers.indexOf('Video ID');
+  const videoIdColumnIndex = headers.indexOf('VideoID');
   const rows = [...table.querySelectorAll('tbody tr')];
   rows.forEach(row => {
     if (videoIdColumnIndex != -1) {

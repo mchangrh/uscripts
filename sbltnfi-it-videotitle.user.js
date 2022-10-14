@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Titles for sb.ltn.fi (with InnerTube)
 // @namespace    mchang.name
-// @version      2.0.1
+// @version      2.0.2
 // @description  Replaces the video ID with the video title in the 'Video ID' column.
 // @author       TheJzoli, michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -40,9 +40,9 @@ const videoIdAndRowElementObj = {};
 
     [...document.querySelectorAll('table')].forEach(table => {
         const headers = [...table.querySelectorAll('thead th')].map(item => item.textContent.trim());
-        if (headers.includes('Video ID') || headers.includes('Videoid')) {
-            const columnIndex = headers.includes('Video ID') ? headers.indexOf('Video ID') : headers.indexOf('Videoid');
-            if (headers.includes('Video ID')) {
+        if (headers.includes('VideoID') || headers.includes('Videoid')) {
+            const columnIndex = headers.includes('VideoID') ? headers.indexOf('VideoID') : headers.indexOf('Videoid');
+            if (headers.includes('VideoID')) {
                 [...table.querySelectorAll('thead th')][columnIndex].children[0].innerText = "Video";
             } else {
                 [...table.querySelectorAll('thead th')][columnIndex].innerText = "Video";
