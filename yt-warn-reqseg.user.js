@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Warn on Required Segments
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  adds a big red warning to the top of the screen when requiredSegment is present
 // @author       michael@mchang.name
 // @match        https://www.youtube.com/*
@@ -11,20 +11,18 @@
 // @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-warn-reqseg.user.js
 // ==/UserScript==
 
-(function() {
-  var intv = setInterval(function() {
-      const cont = document.querySelector('ytd-masthead#masthead');
-      if (!cont) return false;
-      //when element is found, clear the interval.
-      checkRequired();
-      clearInterval(intv);
-  }, 100);
-})();
+function awaitMasthead() {
+  const ready = document.querySelector('ytd-masthead#masthead');
+  if (ready) return checkRequired()
+  else return setInterval(awaitMasthead, 100)
+}
+awaitMasthead()
 
 document.body.addEventListener("yt-navigate-finish", (event) => checkRequired() );
 
 function checkRequired() {
-  const hash = new URL(document.URL).hash
+  const hash = new URL(document.URL)?.hash
+  if (!hash) return
   const hasReqSegm = hash.startsWith("#requiredSegment");
   const segmentID = hash.match(/=([\da-f]{64,65})/)[1]
   if (hasReqSegm) setupButton(segmentID)
