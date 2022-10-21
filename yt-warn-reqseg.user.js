@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Warn on Required Segments
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      1.0.2
 // @description  adds a big red warning to the top of the screen when requiredSegment is present
 // @author       michael@mchang.name
 // @match        https://www.youtube.com/*
@@ -24,8 +24,10 @@ function checkRequired() {
   const hash = new URL(document.URL)?.hash
   if (!hash) return
   const hasReqSegm = hash.startsWith("#requiredSegment");
-  const segmentID = hash.match(/=([\da-f]{64,65})/)[1]
-  if (hasReqSegm) setupButton(segmentID)
+  if (hasReqSegm) {
+    const segmentID = hash.match(/=([\da-f]{64,65})/)?.[1]
+    setupButton(segmentID)
+  }
 }
 
 function setupButton(segmentID) {
