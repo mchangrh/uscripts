@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Warn on Required Segments
 // @namespace    mchang.name
-// @version      1.0.2
+// @version      1.0.3
 // @description  adds a big red warning to the top of the screen when requiredSegment is present
 // @author       michael@mchang.name
 // @match        https://www.youtube.com/*
@@ -14,7 +14,7 @@
 function awaitMasthead() {
   const ready = document.querySelector('ytd-masthead#masthead');
   if (ready) return checkRequired()
-  else return setInterval(awaitMasthead, 100)
+  else return setTimeout(awaitMasthead, 100)
 }
 awaitMasthead()
 
