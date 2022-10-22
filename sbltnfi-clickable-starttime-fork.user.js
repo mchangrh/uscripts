@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.3
+// @version      1.1.4
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -41,7 +41,7 @@ function create() {
     link.textContent = content;
     link.style.color = 'inherit';
     link.classList.add("clickable-starttime");
-    const timeParam = startTime > 0 ? `t=${startTime}s` : ""
+    const timeParam = startTime > 0 ? `&t=${startTime}s` : ""
     link.href = `https://www.youtube.com/watch?v=${videoId}${timeParam}#requiredSegment=${UUID}`;
     cellEl.innerHTML = '';
     cellEl.appendChild(link);
