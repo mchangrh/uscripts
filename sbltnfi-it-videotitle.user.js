@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Video Titles for sb.ltn.fi (with InnerTube)
 // @namespace    mchang.name
-// @version      2.0.2
+// @version      2.0.3
 // @description  Replaces the video ID with the video title in the 'Video ID' column.
 // @author       TheJzoli, michael@mchang.name
 // @match        https://sb.ltn.fi/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
-// @connect      https://www.youtube.com/youtubei/v1/player
+// @connect      www.youtube.com
 // ==/UserScript==
 
 const videoIdAndRowElementObj = {};
@@ -43,7 +43,7 @@ const videoIdAndRowElementObj = {};
         if (headers.includes('VideoID') || headers.includes('Videoid')) {
             const columnIndex = headers.includes('VideoID') ? headers.indexOf('VideoID') : headers.indexOf('Videoid');
             if (headers.includes('VideoID')) {
-                [...table.querySelectorAll('thead th')][columnIndex].children[0].innerText = "Video";
+                [...table.querySelectorAll('thead th')][columnIndex].firstChild.innerText = "Video";
             } else {
                 [...table.querySelectorAll('thead th')][columnIndex].innerText = "Video";
             }

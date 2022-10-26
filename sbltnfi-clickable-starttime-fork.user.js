@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.4
+// @version      1.1.5
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -24,8 +24,8 @@ function create() {
   const videoIdColumnIndex = headers.indexOf('VideoID');
   const rows = [...table.querySelectorAll('tbody tr')];
   rows.forEach(row => {
-    if (videoIdColumnIndex != -1) {
-      videoId = row.children[videoIdColumnIndex].textContent.trim().slice(0, -3);
+    if (!videoId) {
+      videoId = row.children[videoIdColumnIndex].firstChild.textContent.trim()
     }
     if (!videoId) return;
     const UUID = row.children[UUIDColumnIndex].querySelector("textarea").textContent.trim()
@@ -41,7 +41,7 @@ function create() {
     link.textContent = content;
     link.style.color = 'inherit';
     link.classList.add("clickable-starttime");
-    const timeParam = startTime > 0 ? `&t=${startTime}s` : ""
+    const timeParam = startTimeSeconds > 0 ? `&t=${startTimeSeconds}s` : ""
     link.href = `https://www.youtube.com/watch?v=${videoId}${timeParam}#requiredSegment=${UUID}`;
     cellEl.innerHTML = '';
     cellEl.appendChild(link);
