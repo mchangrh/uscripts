@@ -26,3 +26,6 @@
 
 [`yt-warn-reqseg.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-warn-reqseg.user.js)
 > Adds a very big, red and annoying warning at the top of the screen with requiredSegment is present
+
+[`sbltnfi-export-segments.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-export-segments.user.js)
+> Export sbltnfi segments into loadable URLs
