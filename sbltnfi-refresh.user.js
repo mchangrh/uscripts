@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi refresh segment
 // @namespace    mchang.name
-// @version      1.1.3
+// @version      1.1.4
 // @description  Refresh a single segment
 // @author       mchangrh
 // @match        https://sb.ltn.fi/*
@@ -24,7 +24,7 @@ function refreshRow(event) {
 }
 
 function createButtons() {
-  const table = document.querySelector("table");
+  const table = document.querySelector("table.table");
   const headers = [...table.querySelectorAll("thead th")].map((item) =>
     item.textContent.trim()
   );

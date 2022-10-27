@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.5
+// @version      1.1.6
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -15,7 +15,7 @@ const findVideoID = (str) => str.match(videoRegex)?.[1];
 let videoId = findVideoID(window.location.href);
 
 function create() {
-  const table = document.querySelector("table");
+  const table = document.querySelector("table.table");
   const headers = [...table.querySelectorAll('thead th')].map(item =>
     item.textContent.trim()
   );

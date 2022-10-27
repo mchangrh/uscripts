@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi imprecise times
 // @namespace    mchang.name
-// @version      1.1.2
+// @version      1.1.3
 // @description  Make all times on sb.ltn.fi imprecise
 // @author       mchangrh
 // @match        https://sb.ltn.fi/*
@@ -22,7 +22,7 @@ function findTimes() {
   const startIndex = headers.indexOf("Start");
   const endIndex = headers.indexOf("End");
   const lengthIndex = headers.indexOf("Length")
-  const table = document.querySelector("table");
+  const table = document.querySelector("table.table");
   table.querySelectorAll("tbody tr").forEach((row) => {
     for (const index of [startIndex, endIndex, lengthIndex]) {
       // skip if index is -1

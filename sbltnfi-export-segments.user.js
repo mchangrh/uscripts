@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi export as #segments
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      1.0.2
 // @description  Export sbltnfi segments into loadable URLs
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -22,7 +22,7 @@ const stringToSec = (str) => str
   .reduce((acc, curr)=>acc+curr, 0);
 
 function create() {
-  const table = document.querySelector("table");
+  const table = document.querySelector("table.table");
   const headers = [...table.querySelectorAll('thead th')].map(item =>
     item.textContent.trim()
   );
@@ -38,7 +38,7 @@ function create() {
       videoId = row.children[videoIdColumnIndex].firstChild.textContent.trim();
     }
     if (!videoId) return;
-    const startTime = row.children[startColumnIndex].textContent.trim();
+    const startTime = row.children[startColumnIndex].firstChild.textContent.trim();
     const startTimeSeconds = stringToSec(startTime)
     const endTime = row.children[endColumnIndex].textContent.trim();
     const endTimeSeconds = stringToSec(endTime)
