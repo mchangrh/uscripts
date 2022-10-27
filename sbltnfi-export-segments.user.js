@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi export as #segments
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  Export sbltnfi segments into loadable URLs
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -45,6 +45,7 @@ function create() {
     const actionType = row.children[actionTypeColumnIndex].firstChild.title.trim().toLowerCase();
     const openLink = document.createElement('a');
     openLink.textContent = "📂";
+    openLink.title = "Export segment to loadable URL"
     openLink.href = createLink(videoId, startTimeSeconds, endTimeSeconds, actionType);
     openLink.style.color = 'inherit';
     openLink.classList.add("export-segment");
