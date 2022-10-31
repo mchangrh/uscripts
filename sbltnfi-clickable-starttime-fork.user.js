@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.8
+// @version      1.1.9
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -37,7 +37,7 @@ function create() {
     if (cellEl.querySelector(".clickable-starttime")) return;
     const content = cellEl.textContent.trim();
     const link = document.createElement('a');
-    const startTimeSeconds = content.split(/[\:\.]/)
+    let startTimeSeconds = content.split(/[\:\.]/)
       .map(s=>Number(s)).reverse()
       .map((val,index) => ([0, 1, 60, 3600][index] * val))
       .reduce((acc, curr)=>acc+curr, 0);
