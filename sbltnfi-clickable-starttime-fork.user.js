@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.6
+// @version      1.1.7
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -37,7 +37,9 @@ function create() {
     const startTimeSeconds = content.split(/[\:\.]/)
       .map(s=>Number(s)).reverse()
       .map((val,index) => ([0, 1, 60, 3600][index] * val))
-      .reduce((acc, curr)=>acc+curr, 0);
+      .reduce((acc, curr)=>acc+curr, 0)
+    // -2s to have time before skip
+    startTimeSeconds-=2;
     link.textContent = content;
     link.style.color = 'inherit';
     link.classList.add("clickable-starttime");
