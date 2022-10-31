@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.7
+// @version      1.1.8
 // @description  Makes the startTime clickable
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -12,7 +12,8 @@
 
 const videoRegex = new RegExp(/(?:(?:video\/)|(?:videoid=))([0-9A-Za-z_-]{11})/);
 const findVideoID = (str) => str.match(videoRegex)?.[1];
-let videoId = findVideoID(window.location.href);
+let pageVideoID = findVideoID(window.location.href);
+let videoId;
 
 function create() {
   const table = document.querySelector("table.table");
@@ -24,8 +25,10 @@ function create() {
   const videoIdColumnIndex = headers.indexOf('VideoID');
   const rows = [...table.querySelectorAll('tbody tr')];
   rows.forEach(row => {
-    if (!videoId) {
+    if (!pageVideoID) {
       videoId = row.children[videoIdColumnIndex].firstChild.textContent.trim()
+    } else {
+      videoId = pageVideoID
     }
     if (!videoId) return;
     const UUID = row.children[UUIDColumnIndex].querySelector("textarea").textContent.trim()
@@ -37,7 +40,7 @@ function create() {
     const startTimeSeconds = content.split(/[\:\.]/)
       .map(s=>Number(s)).reverse()
       .map((val,index) => ([0, 1, 60, 3600][index] * val))
-      .reduce((acc, curr)=>acc+curr, 0)
+      .reduce((acc, curr)=>acc+curr, 0);
     // -2s to have time before skip
     startTimeSeconds-=2;
     link.textContent = content;
