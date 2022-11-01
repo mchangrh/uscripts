@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi export as #segments
 // @namespace    mchang.name
-// @version      1.0.2
+// @version      1.0.3
 // @description  Export sbltnfi segments into loadable URLs
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -15,11 +15,12 @@ const videoRegex = new RegExp(/(?:(?:video\/)|(?:videoid=))([0-9A-Za-z_-]{11})/)
 const findVideoID = (str) => str.match(videoRegex)?.[1];
 let videoId = findVideoID(window.location.href);
 
-const stringToSec = (str) => str
-  .split(/[\:\.]/)
-  .map(s=>Number(s)).reverse()
-  .map((val,index) => ([0.001, 1, 60, 3600][index] * val))
-  .reduce((acc, curr)=>acc+curr, 0);
+const stringToSec = (str) => {
+  const [s, ms] = str.split('.')
+  // https://stackoverflow.com/a/45292588
+  s.split(':').reduce((acc,time) => (60 * acc) + +time)
+  return s + '.' + ms;
+}
 
 function create() {
   const table = document.querySelector("table.table");
