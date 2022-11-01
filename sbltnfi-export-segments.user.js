@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi export as #segments
 // @namespace    mchang.name
-// @version      1.0.3
+// @version      1.0.4
 // @description  Export sbltnfi segments into loadable URLs
 // @author       Michael Chang <michael@mchang.name
 // @match        https://sb.ltn.fi/*
@@ -18,8 +18,8 @@ let videoId = findVideoID(window.location.href);
 const stringToSec = (str) => {
   const [s, ms] = str.split('.')
   // https://stackoverflow.com/a/45292588
-  s.split(':').reduce((acc,time) => (60 * acc) + +time)
-  return s + '.' + ms;
+  t = s.split(':').reduce((acc,time) => (60 * acc) + +time)
+  return t + '.' + ms;
 }
 
 function create() {
