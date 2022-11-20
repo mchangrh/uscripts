@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi refresh segment
 // @namespace    mchang.name
-// @version      1.1.4
+// @version      1.2.0
 // @description  Refresh a single segment
 // @author       mchangrh
 // @match        https://sb.ltn.fi/*
@@ -19,7 +19,9 @@ function refreshRow(event) {
     url: `https://sponsor.ajay.app/api/segmentInfo?UUID=${uuid}`,
     responseType: "json",
     timeout: 10000,
-    onload: (res) => updateRow(res.response[0]),
+    onload: (res) => updateRow(res.response[0], uuid),
+    onerror: (res) => updateRow(false, uuid),
+    ontimeout: (res) => updateRow(false, uuid)
   });
 }
 
@@ -47,7 +49,7 @@ function createButtons() {
 const oldChildrenFind = (children, textMatch) =>
   Array.from(children).find((elem) => elem.innerText == textMatch);
 
-function updateRow(data) {
+function updateRow(data, uuid) {
   const table = document.querySelector("table");
   const headers = [...table.querySelectorAll("thead th")].map((item) =>
     item.textContent.trim()
@@ -57,7 +59,8 @@ function updateRow(data) {
   table.querySelectorAll("tbody tr").forEach((row) => {
     const rowChildren = row.children;
     const cellEl = rowChildren[uuidColumnIndex];
-    if (cellEl.querySelector("textarea").value === data.UUID) {
+    if (cellEl.querySelector("textarea").value === uuid) {
+      if (!data) return cellEl.querySelector("#mchang_refresh").innerText = "⚠️";
       cellEl.querySelector("#mchang_refresh").innerText = "✅";
       // update data
       // votes
