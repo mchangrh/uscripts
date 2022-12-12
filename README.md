@@ -29,3 +29,6 @@
 
 [`sbltnfi-export-segments.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-export-segments.user.js)
 > Export sbltnfi segments into loadable URLs
+
+[`yt-mstime.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-mstime.user.js)
+> Add milliseconds to YT end time
