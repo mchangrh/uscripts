@@ -1,24 +1,15 @@
 // ==UserScript==
 // @name         sb.ltn.fi preset page link
 // @namespace    mchang.name
-// @version      2.0.0
+// @version      2.1.0
 // @description  Open corresponding sb.ltn.fi link from YouTube
-// @author       Deedit, michael@mchang.name
+// @author       Deedit, michael mchang.name
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
-// @grant        none
+// @require      https://neuter.mchang.xyz/require/wfke.js
 // @run-at       document-idle
+// @grant        none
 // ==/UserScript==
-
-(function() {
-  var intv = setInterval(function() {
-    const x = document.getElementById('center');
-    if (x === null) return false;
-    //when element is found, clear the interval.
-    setupButton();
-    clearInterval(intv);
-  }, 100);
-})();
 
 // custom filters for SBB
 const customFilters = new URLSearchParams({
@@ -26,10 +17,6 @@ const customFilters = new URLSearchParams({
   "views_min": 1,
   "sort": "starttime"
 })
-
-document.body.addEventListener("yt-navigate-finish", function(event) {
-  setupButton();
-});
 
 function setupButton() {
   'use strict';
@@ -52,3 +39,6 @@ function setupButton() {
     };
   }
 }
+
+wfke("center", setupButton)
+document.body.addEventListener("yt-navigate-finish", (event) => setupButton());
