@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         sb.ltn.fi export as #segments
 // @namespace    mchang.name
-// @version      1.0.5
+// @version      1.0.6
 // @description  Export sbltnfi segments into loadable URLs
-// @author       Michael Chang <michael@mchang.name
+// @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-export-segments.user.js
 // @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-export-segments.user.js
+// @require      https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/stringToSec.js
 // @icon         https://sb.ltn.fi/static/browser/logo.png
 // @grant        none
 // ==/UserScript==
@@ -14,14 +15,6 @@
 const videoRegex = new RegExp(/(?:(?:video\/)|(?:videoid=))([0-9A-Za-z_-]{11})/);
 const findVideoID = (str) => str.match(videoRegex)?.[1];
 let videoId = findVideoID(window.location.href);
-
-const stringToSec = (str) => {
-  let [s, ms] = str.split('.')
-  ms = ms ?? 0
-  // https://stackoverflow.com/a/45292588
-  t = s.split(':').reduce((acc,time) => (60 * acc) + +time)
-  return t + '.' + ms;
-}
 
 function create() {
   const table = document.querySelector("table.table");

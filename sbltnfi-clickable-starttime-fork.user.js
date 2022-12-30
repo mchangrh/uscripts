@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.9
+// @version      1.1.10
 // @description  Makes the startTime clickable
-// @author       Michael Chang <michael@mchang.name
+// @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-clickable-starttime-fork.user.js
 // @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-clickable-starttime-fork.user.js
+// @require      https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/stringToSec.js
 // @grant        none
 // ==/UserScript==
 
@@ -37,10 +38,7 @@ function create() {
     if (cellEl.querySelector(".clickable-starttime")) return;
     const content = cellEl.textContent.trim();
     const link = document.createElement('a');
-    let startTimeSeconds = content.split(/[\:\.]/)
-      .map(s=>Number(s)).reverse()
-      .map((val,index) => ([0, 1, 60, 3600][index] * val))
-      .reduce((acc, curr)=>acc+curr, 0);
+    let startTimeSeconds = stringToSec(content, false)
     // -2s to have time before skip
     startTimeSeconds-=2;
     link.textContent = content;
