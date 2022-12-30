@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         sb.ltn.fi preset redirect + replace
 // @namespace    mchang.name
-// @version      2.0.0
+// @version      2.0.1
 // @description  make sure all sbltnfi links are filtered appropiately - redirect or replace hrefs
-// @author       michael@mchang.name
+// @author       michael mchang.name
 // @match        https://sb.ltn.fi/video/*
 // @match        https://sb.ltn.fi/uuid/*
 // @match        https://sb.ltn.fi/username/*
@@ -53,12 +53,11 @@ function redirect() {
   window.location.replace(newURL)
 }
 
-function replaceLinks() {
+const replaceLinks = () =>
   document.querySelectorAll("a").forEach(link => {
     const newhref = substitute(link.href)
     if (newhref) link.setAttribute("href", newhref)
   })
-}
 
 redirect()
 // wait 200ms for document-end

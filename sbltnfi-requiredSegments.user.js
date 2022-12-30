@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         sb.ltn.fi UUID requiredSegment
 // @namespace    mchang.name
-// @version      2.2.3
+// @version      2.2.4
 // @description  Generate a link to requiredSegment from UUID
-// @author       mchangrh
+// @author       michael mchang.name
 // @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-requiredSegments.user.js
 // @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-requiredSegments.user.js
 // @match        https://sb.ltn.fi/*

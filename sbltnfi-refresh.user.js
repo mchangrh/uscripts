@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         sb.ltn.fi refresh segment
 // @namespace    mchang.name
-// @version      1.2.0
+// @version      1.2.1
 // @description  Refresh a single segment
-// @author       mchangrh
+// @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @icon         https://sb.ltn.fi/static/browser/logo.png
 // @grant        GM_xmlhttpRequest

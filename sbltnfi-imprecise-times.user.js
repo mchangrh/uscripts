@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         sb.ltn.fi imprecise times
 // @namespace    mchang.name
-// @version      1.1.3
+// @version      1.1.4
 // @description  Make all times on sb.ltn.fi imprecise
-// @author       mchangrh
+// @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @icon         https://sb.ltn.fi/static/browser/logo.png
-// @grant        none
 // @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-imprecise-times.user.js
 // @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-imprecise-times.user.js
+// @grant        none
 // ==/UserScript==
 
 // replace consequtive zeros at the end (that also follows a .) with nothing
@@ -16,7 +16,7 @@ const reduceTime = time => time.replace(/(?<=\.\d+)0+$/g, '');
 
 function findTimes() {
   const headers = [...document.querySelectorAll("thead th")].map((item) =>
-    item.textContent.trim()
+  item.textContent.trim()
   );
   // get all header indexes
   const startIndex = headers.indexOf("Start");

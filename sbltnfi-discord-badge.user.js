@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord badge
 // @namespace    mchang.name
-// @version      1.0.3
+// @version      1.0.4
 // @description  Indicates if a SB user is on discord
-// @author       mchangrh
+// @author       michael mchang.name
 // @match        https://sb.ltn.fi/userid/*
 // @icon         https://cdn.mchang.xyz/uscript/discord-badge.png
-// @grant        GM_xmlhttpRequest
 // @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-discord-badge.user.js
 // @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-discord-badge.user.js
+// @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
 const AUTH = "tlB7XLNX3b33nbnx01hw"
