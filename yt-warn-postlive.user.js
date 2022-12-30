@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Warn on Post-Live Manifestless
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  adds a big red warning to the top of the screen when video is post-live manifestless
 // @author       michael@mchang.name
 // @match        https://www.youtube.com/*
@@ -33,7 +33,7 @@ function warn() {
 }
 
 const checkRequired = () => {
-  if (playerDetail.getVideoData().isManifestless) warn()
+  if (playerDetail && playerDetail.getVideoData().isManifestless) warn()
 }
 
 function awaitMasthead() {
