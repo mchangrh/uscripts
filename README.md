@@ -12,6 +12,9 @@
 [`sbltnfi-it-videotitle.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-it-videotitle.user.js)
 > Fork of [TheJzoli's Script](https://gist.github.com/TheJzoli/8a4cd979d433b7359cdf61c238bc0181) using innerTube instead of public invidious instances
 
+[`sbltnfi-oembed-videotitle.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-oembed-videotitle.user.js)
+> Fork of [TheJzoli's Script](https://gist.github.com/TheJzoli/8a4cd979d433b7359cdf61c238bc0181) using OEmbed API instead of public invidious instances
+
 [`sbltnfi-preset-replace.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-preset-replace.user.js)
 > Replaces or redirct all sb.ltn.fi links to be pre-loaded with filters
 
