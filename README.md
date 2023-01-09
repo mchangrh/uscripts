@@ -38,3 +38,14 @@
 
 [`yt-warn-postlive.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-warn-postlive.user.js)
 > Warn if video is post-live manifestless
+
+[`yt-frames.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-frames.user.js)
+> Add frames to YT time
+
+[`yt-moreseek.user.js`](https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-moreseek.user.js)
+> Add additional seeking options to YT
+
+> A/D for back/forth
+>- Ctrl = 10s
+>- Default = 1s
+>- Shift = 0.1s
