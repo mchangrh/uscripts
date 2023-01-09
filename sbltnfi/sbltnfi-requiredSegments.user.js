@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         sb.ltn.fi UUID requiredSegment
 // @namespace    mchang.name
-// @version      2.2.4
+// @version      2.2.5
 // @description  Generate a link to requiredSegment from UUID
 // @author       michael mchang.name
-// @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-requiredSegments.user.js
-// @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-requiredSegments.user.js
 // @match        https://sb.ltn.fi/*
 // @icon         https://sb.ltn.fi/static/browser/logo.png
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-requiredSegments.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-requiredSegments.user.js
+// @grant        none
 // ==/UserScript==
 
 function createButtons() {

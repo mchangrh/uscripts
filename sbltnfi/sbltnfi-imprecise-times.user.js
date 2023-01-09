@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         sb.ltn.fi imprecise times
 // @namespace    mchang.name
-// @version      1.1.4
+// @version      1.1.5
 // @description  Make all times on sb.ltn.fi imprecise
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @icon         https://sb.ltn.fi/static/browser/logo.png
-// @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-imprecise-times.user.js
-// @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-imprecise-times.user.js
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-imprecise-times.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-imprecise-times.user.js
 // @grant        none
 // ==/UserScript==
 

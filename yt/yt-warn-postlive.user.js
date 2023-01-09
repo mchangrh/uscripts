@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Warn on Post-Live Manifestless
 // @namespace    mchang.name
-// @version      1.1.0
+// @version      1.1.1
 // @description  adds a big red warning to the top of the screen when video is post-live manifestless
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
-// @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-warn-postlive.user.js
-// @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-warn-postlive.user.js
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-warn-postlive.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-warn-postlive.user.js
 // @require      https://neuter.mchang.xyz/require/wfke.js
 // @grant        none
 // ==/UserScript==

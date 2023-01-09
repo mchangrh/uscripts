@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         sb.ltn.fi preset redirect + replace
 // @namespace    mchang.name
-// @version      2.0.1
+// @version      2.0.2
 // @description  make sure all sbltnfi links are filtered appropiately - redirect or replace hrefs
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/video/*
 // @match        https://sb.ltn.fi/uuid/*
 // @match        https://sb.ltn.fi/username/*
 // @match        https://sb.ltn.fi/userid/*
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-preset-replace.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-preset-replace.user.js
 // @icon         https://sb.ltn.fi/static/browser/logo.png
 // @run-at       document-start
 // @grant        none

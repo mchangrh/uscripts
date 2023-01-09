@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         sb.ltn.fi export as #segments
 // @namespace    mchang.name
-// @version      1.0.6
+// @version      1.0.7
 // @description  Export sbltnfi segments into loadable URLs
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
-// @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-export-segments.user.js
-// @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-export-segments.user.js
-// @require      https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/stringToSec.js
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-export-segments.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-export-segments.user.js
+// @require      https://uscript.mchang.xyz/require/stringToSec.js
 // @icon         https://sb.ltn.fi/static/browser/logo.png
 // @grant        none
 // ==/UserScript==

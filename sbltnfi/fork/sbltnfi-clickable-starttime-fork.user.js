@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         SponsorBlock clickable startTime (sb.ltn.fi) fork
 // @namespace    mchang-sb.ltn.fi.clickable.starttime
-// @version      1.1.10
+// @version      1.1.11
 // @description  Makes the startTime clickable
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
-// @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-clickable-starttime-fork.user.js
-// @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/sbltnfi-clickable-starttime-fork.user.js
-// @require      https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/stringToSec.js
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-clickable-starttime-fork.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-clickable-starttime-fork.user.js
+// @require      https://uscript.mchang.xyz/require/stringToSec.js
 // @grant        none
 // ==/UserScript==
 

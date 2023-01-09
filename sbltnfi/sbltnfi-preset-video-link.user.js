@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         sb.ltn.fi preset page link
 // @namespace    mchang.name
-// @version      2.1.0
+// @version      2.1.1
 // @description  Open corresponding sb.ltn.fi link from YouTube
 // @author       Deedit, michael mchang.name
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-preset-video-link.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-preset-video-link.user.js
 // @require      https://neuter.mchang.xyz/require/wfke.js
 // @run-at       document-idle
 // @grant        none

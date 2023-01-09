@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Video Titles for sb.ltn.fi (with OEmbed)
 // @namespace    mchang.name
-// @version      3.0.0
+// @version      3.0.1
 // @description  Replaces the video ID with the video title in the 'Video ID' column.
 // @author       TheJzoli, michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @connect      www.youtube.com
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // ==/UserScript==

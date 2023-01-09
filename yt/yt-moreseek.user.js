@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Add seek precision to YouTube
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  Add additional seeking options on YouTube
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-moreseek.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-moreseek.user.js
 // @grant        none
-// @updateURL    https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-moreseek.user.js
-// @downloadURL  https://gist.github.com/mchangrh/9507604353e37b6abc2f7f6b3c6e1338/raw/yt-moreseek.user.js
 // ==/UserScript==
 
 const seekTo = (amt) => player.seekBy(amt);
