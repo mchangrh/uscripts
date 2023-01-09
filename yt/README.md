@@ -14,6 +14,9 @@
 [`yt-mstime.user.js`](https://uscript.mchang.xyz/yt/yt-mstime.user.js)
 > Add milliseconds to YT end time
 
+[`yt-smpte.user.js`](https://uscript.mchang.xyz/yt/yt-smpte.user.js)
+> Add SMPTE timecode (frames) to YT or optionally display current time in frames (goes well with `yt-frames`)
+
 [`yt-warn-postlive.user.js`](https://uscript.mchang.xyz/yt/yt-warn-postlive.user.js)
 > Warn if video is post-live manifestless
 
