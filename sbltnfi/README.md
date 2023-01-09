@@ -3,6 +3,9 @@
 [`sbltnfi-discord-badge.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-discord-badge.user.js)
 > Add Discord badge to any users that are registered with sb-slash on sb.ltn.fi
 
+[`sbltnfi-export-segments.user.js`](https://uscript.mchang.xyz/yt/sbltnfi-export-segments.user.js)
+> Export sbltnfi segments into loadable URLs
+
 [`sbltnfi-imprecise-times.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-imprecise-times.user.js)
 > Removes trailing zeros from start, end and length times
 
