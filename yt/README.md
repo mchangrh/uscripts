@@ -6,13 +6,19 @@
 [`yt-moreseek.user.js`](https://uscript.mchang.xyz/yt/yt-moreseek.user.js)
 > Add additional seeking options to YT
 
-> A/D for back/forth
->- Ctrl = 10s
->- Default = 1s
->- Shift = 0.1s
+A/D for back/forth
+- Ctrl = 10s
+- Default = 1s
+- Shift = 0.1s
 
 [`yt-mstime.user.js`](https://uscript.mchang.xyz/yt/yt-mstime.user.js)
 > Add milliseconds to YT end time
+
+[`yt-shorts-redirect.user.js`](https://uscript.mchang.xyz/yt/yt-shorts-redirect.user.js)
+> Better YT Shorts redirector
+- only triggers on navigate events
+- works on mobile
+- intercepts navigation request, not response
 
 [`yt-smpte.user.js`](https://uscript.mchang.xyz/yt/yt-smpte.user.js)
 > Add SMPTE timecode (frames) to YT or optionally display current time in frames (goes well with `yt-frames`)
