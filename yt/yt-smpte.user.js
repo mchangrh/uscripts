@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Add SMTPE format to YouTube time
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  Add frames to YouTube time
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-smpte.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-smpte.user.js
-// @require      https://neuter.mchang.xyz/require/wfke.js
+// @require      https://uscript.mchang.xyz/require/wfke.js
 // @grant        none
 // ==/UserScript==
 

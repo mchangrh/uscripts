@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Add milliseconds to YouTube time
 // @namespace    mchang.name
-// @version      1.1.1
+// @version      1.1.2
 // @description  add exact milliseconds to YouTube time
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-mstime.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-mstime.user.js
-// @require      https://neuter.mchang.xyz/require/wfke.js
+// @require      https://uscript.mchang.xyz/require/wfke.js
 // @grant        none
 // ==/UserScript==
 
