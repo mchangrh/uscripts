@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Warn on Post-Live Manifestless
 // @namespace    mchang.name
-// @version      1.1.1
+// @version      1.1.2
 // @description  adds a big red warning to the top of the screen when video is post-live manifestless
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-warn-postlive.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-warn-postlive.user.js
-// @require      https://neuter.mchang.xyz/require/wfke.js
+// @require      https://uscript.mchang.xyz/require/wfke.js
 // @grant        none
 // ==/UserScript==
 
@@ -36,6 +36,11 @@ const checkRequired = () => {
   if (playerDetail && playerDetail.getVideoData().isManifestless) warn()
 }
 
+const reset = () => {
+  document.getElementById("postlive-warning")?.remove
+  checkRequired()
+}
+
 const awaitMasthead = () => wfke("ytd-masthead#masthead", checkRequired)
 
 const hookDetail = (e) => {
@@ -43,5 +48,5 @@ const hookDetail = (e) => {
   awaitMasthead()
 }
 
-document.addEventListener("yt-navigate-finish", (event) => awaitMasthead() );
+document.addEventListener("yt-navigate-finish", (event) => reset() );
 document.addEventListener("yt-player-updated", hookDetail)
