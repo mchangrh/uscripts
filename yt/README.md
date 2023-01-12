@@ -1,5 +1,8 @@
 # Userscripts for YouTube
 
+[`yt-absview-date.user.js`](https://uscript.mchang.xyz/yt/yt-absview-date.user.js)
+> Replace YouTube rounded views and relative date with absolute values
+
 [`yt-frames.user.js`](https://uscript.mchang.xyz/yt/yt-frames.user.js)
 > Add frames to YT time
 
@@ -19,6 +22,10 @@ A/D for back/forth
 - only triggers on navigate events
 - works on mobile
 - intercepts navigation request, not response
+
+[`yt-persist-ctrl.user.js`](https://uscript.mchang.xyz/yt/yt-persist-ctrl.user.js)
+> Persist YT Controls
+The preview bar does not activate despite the controls being persisted, the current time indicator will be out of date
 
 [`yt-smpte.user.js`](https://uscript.mchang.xyz/yt/yt-smpte.user.js)
 > Add SMPTE timecode (frames) to YT or optionally display current time in frames (goes well with `yt-frames`)
