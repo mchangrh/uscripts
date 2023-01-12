@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add SMTPE format to YouTube time
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      1.0.2
 // @description  Add frames to YouTube time
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -41,11 +41,12 @@ function getCurrentFrame() {
 function setFrames() {
   // create element if dne
   const el = document.getElementById("mchang-ytsmpte");
-  if (el) createElement()
+  if (!el) createElement()
   // get framerate, get frame
   framerate = getFramerate();
   const { total, ms } = getCurrentFrame();
-  const value = smpte ? ms : ` (${total})`;
+  const padMs = (""+ms).padStart(2, "0")
+  const value = smpte ? padMs : ` (${total})`;
   el.innerText = value;
 }
 
