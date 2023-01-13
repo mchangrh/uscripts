@@ -20,3 +20,6 @@
 
 [`sbltnfi-requiredSegments.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-requiredSegments.user.js)
 > Adds a required segment link to all entries
+
+[`sbltnfi-short-sbmchang.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-short-sbmchang.user.js)
+> Adds a shortened (videoid/partialHash) link to all entries
