@@ -17,6 +17,10 @@ A/D for back/forth
 [`yt-mstime.user.js`](https://uscript.mchang.xyz/yt/yt-mstime.user.js)
 > Add milliseconds to YT end time
 
+[`yt-setquality.user.js`](https://uscript.mchang.xyz/yt/yt-setquality.user.js)
+> Force YouTube Video quality  
+> [config page](https://uscript.mchang.xyz/config/setquality)
+
 [`yt-shorts-redirect.user.js`](https://uscript.mchang.xyz/yt/yt-shorts-redirect.user.js)
 > Better YT Shorts redirector
 - only triggers on navigate events

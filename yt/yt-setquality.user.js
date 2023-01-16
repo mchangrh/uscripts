@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT Set Quality
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  FOrce YouTube Quality
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -29,19 +29,16 @@ const setPlayerQuality = () => {
   if (curQuality !== desiredQuality) player.setPlaybackQualityRange(desiredQuality)
 }
 
-const setQualityOption = (event) => {
-  console.log(event.target.value)
-  GM_setValue("yt-quality", event.target.value)
-}
+const setQualityOption = (event) => GM_setValue("yt-quality", event.target.value)
 
 const setupConfigPage = () => {
-  document.getElementById("placeholder").display = "none"
-  document.getElementById("config").display = "block"
+  document.getElementById("placeholder").style.display = "none"
+  document.getElementById("config").style.display = "block"
   const qualitySelect = document.getElementById("quality")
   const currentQuality = GM_getValue("yt-quality", "auto")
   qualitySelect.value = currentQuality
   qualitySelect.addEventListener("input", setQualityOption)
 }
 
-if (document.url === "https://uscript.mchang.xyz/config/setquality") setupConfigPage()
+if (document.URL === "https://uscript.mchang.xyz/config/setquality") setupConfigPage()
 document.addEventListener("yt-navigate-finish", setPlayerQuality);
