@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi shortened sb.mchang.xyz
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  Generate shortened sb.mchang.xyz link (/video/partialHash)
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -14,6 +14,11 @@
 const videoRegex = new RegExp(/(?:(?:video\/)|(?:videoid=))([0-9A-Za-z_-]{11})/);
 const findVideoID = (str) => str.match(videoRegex)?.[1];
 let videoId = findVideoID(window.location.href);
+
+function copyTo(event) {
+  const path = event.target.dataset.path
+  navigator.clipboard.writeText(`https://sb.mchang.xyz/${path}`);
+}
 
 function createButtons() {
   document.querySelectorAll("table.table").forEach((table) => {
@@ -34,9 +39,8 @@ function createButtons() {
       const button = document.createElement("button");
       button.id = "mchang_shortsb";
       button.innerText = "🤏";
-      button.addEventListener("click", () =>
-        navigator.clipboard.writeText(`https://sb.mchang.xyz/${videoId}/${UUID}`)
-      );
+      button.dataset.path = videoId+"/"+UUID;
+      button.addEventListener("click", copyTo);
       cellEl.appendChild(button);
     });
   });
