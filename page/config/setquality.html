@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html><head>
+  <title>yt-setquality config</title>
+  <style>
+    .hero, body, select {
+      display: flex;
+      background: #111;
+      color: #ddd;
+      font-size: 1em;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <pre id="placeholder">yt-setquality not found</pre>
+  <pre id="config" class="hero" style="min-height: 98vmin; display: none;">
+    <label for="quality">Quality:</label>
+    <select name="quality" id="quality">
+      <option value="highres">4320p (8K)</option>
+      <option value="hd2160">2160p (4K)</option>
+      <option value="hd1440">1440p (HD)</option>
+      <option value="hd1080">1080p (HD)</option>
+      <option value="hd720">720p (HD)</option>
+      <option value="large">480p</option>
+      <option value="medium">360p</option>
+      <option value="small">240p</option>
+      <option value="tiny">144p</option>
+      <option value="auto">auto</option>
+    </select>
+  </pre>
+</body></html>

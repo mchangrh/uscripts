@@ -1,2 +1,4 @@
-/ https://github.com/mchangrh/uscripts#readme 301
-/* https://raw.githubusercontent.com/mchangrh/uscripts/main/:splat 301
+/ https://github.com/mchangrh/uscripts 301
+/require/* https://raw.githubusercontent.com/mchangrh/uscripts/main/require/:splat 301
+/yt/* https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/:splat 301
+/sbltnfi/* https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/:splat 301
