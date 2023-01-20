@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT Set Quality
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      1.0.2
 // @description  FOrce YouTube Quality
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -41,4 +41,4 @@ const setupConfigPage = () => {
 }
 
 if (document.URL === "https://uscript.mchang.xyz/config/setquality") setupConfigPage()
-document.addEventListener("yt-navigate-finish", setPlayerQuality);
+document.addEventListener("yt-navigate-finish", wfke(".html5-video-player", setPlayerQuality));
