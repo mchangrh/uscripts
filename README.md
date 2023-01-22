@@ -74,6 +74,9 @@ The preview bar does not activate despite the controls being persisted, the curr
 [`sbltnfi-requiredSegments.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-requiredSegments.user.js)
 > Adds a required segment link to all entries
 
+[`sbltnfi-sbc-warn.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-sbc-warn.user.js)
+> Adds a warning button that opens SBC to pre-fill userID and copies all videoIDs + titles from current page
+
 [`sbltnfi-short-sbmchang.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-short-sbmchang.user.js)
 > Adds a shortened (videoid/partialHash) link to all entries
 </details>
