@@ -15,6 +15,9 @@ A/D for back/forth
 - Default = 1s
 - Shift = 0.1s
 
+[`yt-no-notif.user.js`](https://uscript.mchang.xyz/yt/yt-no-notif.user.js)
+> Remove notification count from title
+
 [`yt-mstime.user.js`](https://uscript.mchang.xyz/yt/yt-mstime.user.js)
 > Add milliseconds to YT end time
 
