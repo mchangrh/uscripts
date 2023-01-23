@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi sbc warn
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.1.0
 // @description  Export userID and videoIDs to SBC for warnings
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/userid/*
@@ -17,13 +17,18 @@ const getVideoIDs = () =>
 
 const getUserID = () => document.location.pathname.split("/")[2]
 
+const getUsername = () => document.querySelector('li.list-group-item>a[href^="/username/"')?.innerText
+
 function warnUser() {
   const userID = getUserID()
+  const username = getUsername()
+  console.log(username)
+  const usernameString = username ? `(${username})` : ""
   const videoIDs = [...new Set(getVideoIDs())].join("\n")
   // open sbc in new tab
   window.open(`https://mruy.github.io/sponsorBlockControl-sveltekit/warnuser?userID=${userID}`)
   // copy videoIDs to clipboard
-  const clipboard = `Warning for https://sb.ltn.fi/userid/${userID}/ \n\n` + videoIDs 
+  const clipboard = `Warning for https://sb.ltn.fi/userid/${userID}/ ${usernameString}\n\n` + videoIDs 
   GM_setClipboard(clipboard)
 }
 
