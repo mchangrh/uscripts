@@ -3,6 +3,9 @@
 [`yt-absview-date.user.js`](https://uscript.mchang.xyz/yt/yt-absview-date.user.js)
 > Replace YouTube rounded views and relative date with absolute values
 
+[`yt-black-screen.user.js`](https://uscript.mchang.xyz/yt/yt-black-screen.user.js)
+> Add black screen between video transitions
+
 [`yt-frames.user.js`](https://uscript.mchang.xyz/yt/yt-frames.user.js)
 > Add frames to YT time
 
