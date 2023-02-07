@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord
 // @namespace    mchang.name
-// @version      1.1.2
+// @version      1.2.0
 // @description  Indicates if a SB user is on discord
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -36,18 +36,16 @@ spanElem.appendChild(discordBadge)
 function addBadge (onDiscord, target) {
   if (!onDiscord) return
   const clone = spanElem.cloneNode(true)
-  if (!target) {
+  if (target) target.after(clone)
+  else {
     // scope to header
     const header = document.querySelector("div.row.mt-2 > .col-auto > .list-group")
     const username = header.children[0]
     username.appendChild(clone)
-  } else {
-    target.after(clone)
   }
 }
 
-(function () {
-  "use strict"
+function addBadges() {
   const pathname = new URL(document.URL).pathname
   if (pathname.includes("/userid/")) {
     const SBID = pathname.split("/")[2]
@@ -58,4 +56,7 @@ function addBadge (onDiscord, target) {
       lookupUser(SBID, elem)
     })
   }
-})()
+}
+
+document.addEventListener("newSegments", addBadges)
+addBadges()
