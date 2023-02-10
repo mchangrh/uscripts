@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord
 // @namespace    mchang.name
-// @version      1.2.0
+// @version      1.2.1
 // @description  Indicates if a SB user is on discord
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -30,6 +30,7 @@ discordBadge.style.height = "1em"
 
 const spanElem = document.createElement("span");
 spanElem.title = "This user is on Discord"
+spanElem.id = "mchang-discord-badge"
 spanElem.classList = "badge bg-secondary ms-1"
 spanElem.appendChild(discordBadge)
 
@@ -53,6 +54,7 @@ function addBadges() {
   } else {
     document.querySelectorAll("a[href^='/userid/']").forEach(elem => {
       const SBID = elem.href.split("/")[4]
+      if (elem.querySelector("#mchang-discord-badge")) return
       lookupUser(SBID, elem)
     })
   }
