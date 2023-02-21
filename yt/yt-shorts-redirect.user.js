@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT Shorts Redirect
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  Better YT Shorts redirector
 // @author       michael mchang.name
 // @match        https://*.youtube.com/*
@@ -9,6 +9,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-shorts-redirect.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-shorts-redirect.user.js
+// @run-at       document-start
 // @grant        none
 // ==/UserScript==
 
