@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi refresh segment
 // @namespace    mchang.name
-// @version      1.2.2
+// @version      1.2.3
 // @description  Refresh a single segment
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -83,6 +83,13 @@ function updateRow(data, uuid) {
         categorySpan.textContent = data.category;
       } else {
         categoryColumn.innerText = data.category;
+      }
+      // shadowhidden
+      const shadowHiddenColumn = rowChildren[headers.indexOf("Shadowhidden")];
+      if (data.shadowHidden === 0) {
+        shadowHiddenColumn.innerText = "—";
+      } else {
+        shadowHiddenColumn.innerText = "❌";
       }
     }
   });
