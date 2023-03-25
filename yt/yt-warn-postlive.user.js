@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Warn on Post-Live Manifestless
 // @namespace    mchang.name
-// @version      1.1.2
+// @version      1.1.3
 // @description  adds a big red warning to the top of the screen when video is post-live manifestless
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -14,12 +14,12 @@
 
 let playerDetail;
 
-function warn() {
+function warn(text) {
   if (document.getElementById("postlive-warning") !== null) return;
   const cont = document.querySelector('ytd-masthead#masthead');
   const spanEl = document.createElement('span');
   spanEl.id = "postlive-warning";
-  spanEl.textContent = "!!!!! post-live manifestless !!!!!";
+  spanEl.textContent = `!!!!! ${text} !!!!!`;
   spanEl.style = `
   font-size: 16px;
   text-align: center;
@@ -33,15 +33,18 @@ function warn() {
 }
 
 const checkRequired = () => {
-  if (playerDetail && playerDetail.getVideoData().isManifestless) warn()
+  if (playerDetail) {
+    if (playerDetail.getVideoData().isLive) warn("live manifestless")
+    else if (playerDetail.getVideoData().isManifestless) warn("post-live manifestless")
+  }
 }
+
+const awaitMasthead = () => wfke("ytd-masthead#masthead", checkRequired)
 
 const reset = () => {
   document.getElementById("postlive-warning")?.remove
   checkRequired()
 }
-
-const awaitMasthead = () => wfke("ytd-masthead#masthead", checkRequired)
 
 const hookDetail = (e) => {
   playerDetail = e.detail
