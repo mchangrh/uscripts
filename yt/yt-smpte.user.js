@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add SMTPE format to YouTube time
 // @namespace    mchang.name
-// @version      1.0.2
+// @version      1.0.3
 // @description  Add frames to YouTube time
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -17,7 +17,7 @@ let framerate;
 let video;
 
 function getFramerate() {
-  const player = document.querySelector('#movie_player');
+  const player = document.querySelector("#movie_player");
   const fps = player
     .getStatsForNerds()
     .resolution
@@ -41,36 +41,36 @@ function getCurrentFrame() {
 function setFrames() {
   // create element if dne
   const el = document.getElementById("mchang-ytsmpte");
-  if (!el) createElement()
+  if (!el) createElement();
   // get framerate, get frame
   framerate = getFramerate();
   const { total, ms } = getCurrentFrame();
-  const padMs = (""+ms).padStart(2, "0")
+  const padMs = (""+ms).padStart(2, "0");
   const value = smpte ? padMs : ` (${total})`;
   el.innerText = value;
 }
 
 function createElement() {
-  const spanEl = document.createElement('span');
+  const spanEl = document.createElement("span");
   spanEl.id = "mchang-ytsmpte";
   spanEl.class = "ytp-time-duration";
   if (smpte) {
     // add ; seperator
-    const seperator = document.createElement('span');
+    const seperator = document.createElement("span");
     seperator.innerText = ";";
     seperator.class = "ytp-time-separator";
     // add to selectors
-    const duration = document.querySelector('.ytp-time-current');
+    const duration = document.querySelector(".ytp-time-current");
     duration.after(seperator);
     seperator.after(spanEl);
   } else {
-    const timeParent = document.querySelector('.ytp-time-current').parentElement;
+    const timeParent = document.querySelector(".ytp-time-current").parentElement;
     timeParent.append(spanEl);
   }
 }
 
 const playingLoop = () => { if (!video.paused) setFrames(); };
-const startLoop = () => setInterval(playingLoop, 10000) // update every 10s
+const startLoop = () => setInterval(playingLoop, 10000); // update every 10s
 
 function mainLoop() {
   video = document.querySelector("video");
@@ -79,5 +79,5 @@ function mainLoop() {
   video.addEventListener("play", startLoop, once = true);
 }
 
-const awaitPlayer = () => wfke(".ytp-time-display", mainLoop)
-document.body.addEventListener("yt-navigate-finish", (event) => awaitPlayer() );
+const awaitPlayer = () => wfke(".ytp-time-display", mainLoop);
+document.body.addEventListener("yt-navigate-finish", (e) => awaitPlayer());

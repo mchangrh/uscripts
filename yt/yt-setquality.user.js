@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT Set Quality
 // @namespace    mchang.name
-// @version      1.0.2
+// @version      1.0.3
 // @description  FOrce YouTube Quality
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -15,30 +15,30 @@
 // ==/UserScript==
 
 const setPlayerQuality = () => {
-  const player = document.querySelector(".html5-video-player")
-  const desiredQuality = GM_getValue("yt-quality", "auto")
-  if (desiredQuality === "auto") return
+  const player = document.querySelector(".html5-video-player");
+  const desiredQuality = GM_getValue("yt-quality", "auto");
+  if (desiredQuality === "auto") return;
   // check if quality is available
   if (!player.getAvailableQualityLevels().includes(desiredQuality)) {
     // if quality DNE, set to desired
-    player.setPlaybackQuality(desiredQuality)
-    return
+    player.setPlaybackQuality(desiredQuality);
+    return;
   }
   // if available, set
-  const curQuality = player.getPlaybackQuality()
-  if (curQuality !== desiredQuality) player.setPlaybackQualityRange(desiredQuality)
-}
+  const curQuality = player.getPlaybackQuality();
+  if (curQuality !== desiredQuality) player.setPlaybackQualityRange(desiredQuality);
+};
 
-const setQualityOption = (event) => GM_setValue("yt-quality", event.target.value)
+const setQualityOption = (event) => GM_setValue("yt-quality", event.target.value);
 
 const setupConfigPage = () => {
-  document.getElementById("placeholder").style.display = "none"
-  document.getElementById("config").style.display = "block"
-  const qualitySelect = document.getElementById("quality")
-  const currentQuality = GM_getValue("yt-quality", "auto")
-  qualitySelect.value = currentQuality
-  qualitySelect.addEventListener("input", setQualityOption)
-}
+  document.getElementById("placeholder").style.display = "none";
+  document.getElementById("config").style.display = "block";
+  const qualitySelect = document.getElementById("quality");
+  const currentQuality = GM_getValue("yt-quality", "auto");
+  qualitySelect.value = currentQuality;
+  qualitySelect.addEventListener("input", setQualityOption);
+};
 
-if (document.URL === "https://uscript.mchang.xyz/config/setquality") setupConfigPage()
+if (document.URL === "https://uscript.mchang.xyz/config/setquality") setupConfigPage();
 document.addEventListener("yt-navigate-finish", wfke(".html5-video-player", setPlayerQuality));

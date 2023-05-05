@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add seek precision to YouTube
 // @namespace    mchang.name
-// @version      1.0.2
+// @version      1.0.3
 // @description  Add additional seeking options on YouTube
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -27,14 +27,13 @@ function listenKey(e) {
     : 1;
   
   if (key == "a" || key == "A") {
-    if (e.ctrlKey) suppress(e)
+    if (e.ctrlKey) suppress(e);
     seekTo(-1 * step);
   } else if (key == "d" || key == "D") {
-    if (e.ctrlKey) suppress(e)
+    if (e.ctrlKey) suppress(e);
     seekTo(step);
   }
 }
 
-const video = document.querySelector('video');
-const player = document.querySelector('#movie_player');
+const player = document.querySelector("#movie_player");
 document.addEventListener("keydown", listenKey);

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT add black screens
 // @namespace    mchang.name
-// @version      0.0.1
+// @version      0.0.2
 // @description  Adds black screens for transitions
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -22,27 +22,27 @@ GM_addStyle(`
   height: 100%;
   background-color: black;
   z-index: 999999;
-}`)
+}`);
 
 // add black screen
 function addBlackScreen(add = true) {
-  const blackScreen = document.getElementById("mchang-black-screen")
+  const blackScreen = document.getElementById("mchang-black-screen");
   if (add && !blackScreen) {
-    const blackScreen = document.createElement("div")
-    blackScreen.id = "mchang-black-screen"
-    document.body.appendChild(blackScreen)
+    const blackScreen = document.createElement("div");
+    blackScreen.id = "mchang-black-screen";
+    document.body.appendChild(blackScreen);
   } else if (blackScreen && !add) {
-    blackScreen.remove()
+    blackScreen.remove();
   }
 }
 
 // wait for yt-navigate-start
 document.addEventListener("yt-navigate-start", (e) => {
-  if (e.detail.pageType == "watch") addBlackScreen()
-})
+  if (e.detail.pageType == "watch") addBlackScreen();
+});
 // when finished and video ready to play
 document.addEventListener("yt-navigate-finish", () =>
   wfke("video", el =>
     el.addEventListener("canplay", () =>
       addBlackScreen(false), { once: true })
-))
+));

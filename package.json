@@ -1,0 +1,23 @@
+{
+  "name": "uscripts",
+  "version": "1.0.0",
+  "description": "collection of userscripts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mchangrh/uscripts.git"
+  },
+  "author": "Michael Chang <michael@mchang.name>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mchangrh/uscripts/issues"
+  },
+  "homepage": "https://github.com/mchangrh/uscripts#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1"
+  },
+  "private": true
+}

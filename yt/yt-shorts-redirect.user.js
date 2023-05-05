@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT Shorts Redirect
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      1.0.2
 // @description  Better YT Shorts redirector
 // @author       michael mchang.name
 // @match        https://*.youtube.com/*
@@ -16,13 +16,13 @@
 const redirect = (input, force = false) => {
   const [path, videoID] = input.split("/").slice(1);
   if (force || path === "shorts") window.location.replace(`https://www.youtube.com/watch?v=${videoID}`);
-}
+};
 
 const startEventHook = (e) => {
-  if (e.detail.pageType == "shorts") redirect(e.detail.url, true)
-}
-const mobileEventHook = (e) => redirect(e.detail.href)
+  if (e.detail.pageType == "shorts") redirect(e.detail.url, true);
+};
+const mobileEventHook = (e) => redirect(e.detail.href);
 
 document.addEventListener("yt-navigate-start", startEventHook);
-window.addEventListener("state-navigatestart", mobileEventHook)
-redirect(window.location.pathname)
+window.addEventListener("state-navigatestart", mobileEventHook);
+redirect(window.location.pathname);

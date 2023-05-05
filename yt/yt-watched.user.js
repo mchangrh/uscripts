@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Flag Watched
 // @namespace    mchang.name
-// @version      1.1
+// @version      1.1.1
 // @description  Flag watched videeos
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -28,5 +28,5 @@ ytd-thumbnail:has(#progress[style="width: 100%;"])::after {
     position: absolute;
     width: 100%;
 }
-`
-GM_addStyle(css) 
+`;
+GM_addStyle(css); 

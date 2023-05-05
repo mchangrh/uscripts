@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add milliseconds to YouTube time
 // @namespace    mchang.name
-// @version      1.1.2
+// @version      1.1.3
 // @description  add exact milliseconds to YouTube time
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -14,16 +14,16 @@
 
 function setMs() {
   if (document.getElementById("mchang-ytms") === null) {
-    const video = document.querySelector('video');
-    const ms = (video.duration+"").split(".").pop() ?? 0
-    const oldTime = document.querySelector('.ytp-time-duration');
-    const spanEl = document.createElement('span');
+    const video = document.querySelector("video");
+    const ms = (video.duration+"").split(".").pop() ?? 0;
+    const oldTime = document.querySelector(".ytp-time-duration");
+    const spanEl = document.createElement("span");
     spanEl.id = "mchang-ytms";
-    spanEl.class = "ytp-time-duration"
-    spanEl.textContent = "."+ms
+    spanEl.class = "ytp-time-duration";
+    spanEl.textContent = "."+ms;
     oldTime.after(spanEl);
   }
 }
 
-const awaitPlayer = () => wfke(".ytp-time-display", setMs)
-document.body.addEventListener("yt-navigate-finish", (event) => awaitPlayer() );
+const awaitPlayer = () => wfke(".ytp-time-display", setMs);
+document.body.addEventListener("yt-navigate-finish", (e) => awaitPlayer());

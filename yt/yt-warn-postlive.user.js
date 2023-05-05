@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Warn on Post-Live Manifestless
 // @namespace    mchang.name
-// @version      1.1.3
+// @version      1.1.4
 // @description  adds a big red warning to the top of the screen when video is post-live manifestless
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -16,8 +16,8 @@ let playerDetail;
 
 function warn(text) {
   if (document.getElementById("postlive-warning") !== null) return;
-  const cont = document.querySelector('ytd-masthead#masthead');
-  const spanEl = document.createElement('span');
+  const cont = document.querySelector("ytd-masthead#masthead");
+  const spanEl = document.createElement("span");
   spanEl.id = "postlive-warning";
   spanEl.textContent = `!!!!! ${text} !!!!!`;
   spanEl.style = `
@@ -28,28 +28,28 @@ function warn(text) {
   color: #fff;
   background: #f00;
   width: 100%;
-  height: 30px;`
+  height: 30px;`;
   cont.prepend(spanEl);
 }
 
 const checkRequired = () => {
   if (playerDetail) {
-    if (playerDetail.getVideoData().isLive) warn("live manifestless")
-    else if (playerDetail.getVideoData().isManifestless) warn("post-live manifestless")
+    if (playerDetail.getVideoData().isLive) warn("live manifestless");
+    else if (playerDetail.getVideoData().isManifestless) warn("post-live manifestless");
   }
-}
+};
 
-const awaitMasthead = () => wfke("ytd-masthead#masthead", checkRequired)
+const awaitMasthead = () => wfke("ytd-masthead#masthead", checkRequired);
 
 const reset = () => {
-  document.getElementById("postlive-warning")?.remove
-  checkRequired()
-}
+  document.getElementById("postlive-warning")?.remove;
+  checkRequired();
+};
 
 const hookDetail = (e) => {
-  playerDetail = e.detail
-  awaitMasthead()
-}
+  playerDetail = e.detail;
+  awaitMasthead();
+};
 
-document.addEventListener("yt-navigate-finish", (event) => reset() );
-document.addEventListener("yt-player-updated", hookDetail)
+document.addEventListener("yt-navigate-finish", (e) => reset() );
+document.addEventListener("yt-player-updated", hookDetail);
