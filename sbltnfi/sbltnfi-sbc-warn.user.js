@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi sbc warn
 // @namespace    mchang.name
-// @version      1.1.0
+// @version      1.1.1
 // @description  Export userID and videoIDs to SBC for warnings
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/userid/*
@@ -13,31 +13,29 @@
 
 const getVideoIDs = () =>
   [...document.querySelectorAll("a[href^='/video/']")]
-    .map(item => `${item.href}${item.href.includes(item.innerText) ? "" : ` | ${item.innerText}`}`)
+    .map(item => `${item.href}${item.href.includes(item.innerText) ? "" : ` | ${item.innerText}`}`);
 
-const getUserID = () => document.location.pathname.split("/")[2]
+const getUserID = () => document.location.pathname.split("/")[2];
 
-const getUsername = () => document.querySelector('li.list-group-item>a[href^="/username/"')?.innerText
+const getUsername = () => document.querySelector("li.list-group-item>a[href^=\"/username/\"")?.innerText;
 
 function warnUser() {
-  const userID = getUserID()
-  const username = getUsername()
-  console.log(username)
-  const usernameString = username ? `(${username})` : ""
-  const videoIDs = [...new Set(getVideoIDs())].join("\n")
+  const userID = getUserID();
+  const username = getUsername();
+  console.log(username);
+  const usernameString = username ? `(${username})` : "";
+  const videoIDs = [...new Set(getVideoIDs())].join("\n");
   // open sbc in new tab
-  window.open(`https://mruy.github.io/sponsorBlockControl-sveltekit/warnuser?userID=${userID}`)
+  window.open(`https://mruy.github.io/sponsorBlockControl-sveltekit/warnuser?userID=${userID}`);
   // copy videoIDs to clipboard
-  const clipboard = `Warning for https://sb.ltn.fi/userid/${userID}/ ${usernameString}\n\n` + videoIDs 
-  GM_setClipboard(clipboard)
+  const clipboard = `Warning for https://sb.ltn.fi/userid/${userID}/ ${usernameString}\n\n` + videoIDs; 
+  GM_setClipboard(clipboard);
 }
 
-const btn = document.createElement('button');
-btn.className = 'btn btn-primary';
-btn.style.margin = '20px';
-btn.innerText = 'Warn User';
-btn.onclick = warnUser
-const element = document.getElementsByClassName('list-group-horizontal')[0];
-if (element) {
-  element.appendChild(btn);
-}
+const btn = document.createElement("button");
+btn.className = "btn btn-primary";
+btn.style.margin = "20px";
+btn.innerText = "Warn User";
+btn.onclick = warnUser;
+const element = document.getElementsByClassName("list-group-horizontal")[0];
+if (element) element.appendChild(btn);

@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         Video Titles for sb.ltn.fi (with OEmbed)
 // @namespace    mchang.name
-// @version      3.0.1
+// @version      3.0.2
 // @description  Replaces the video ID with the video title in the 'Video ID' column.
 // @author       TheJzoli, michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @connect      www.youtube.com
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js
+// @require      https://uscript.mchang.xyz/require/sbltnfi-helpers.js
+// @connect      www.youtube.com
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -15,7 +17,7 @@
 const videoIdAndRowElementObj = {};
 
 (function() {
-  'use strict';
+  "use strict";
   const animationCss = `
   .loading {
     display: inline-block;
@@ -40,56 +42,47 @@ const videoIdAndRowElementObj = {};
   }`;
   GM_addStyle(animationCss);
 
-  [...document.querySelectorAll('table.table')].forEach(table => {
-    const headers = [...table.querySelectorAll('thead th')].map(item => item.textContent.trim());
-    if (headers.includes('VideoID') || headers.includes('Videoid')) {
-      const columnIndex = headers.includes('VideoID') ? headers.indexOf('VideoID') : headers.indexOf('Videoid');
-      if (headers.includes('VideoID')) {
-        [...table.querySelectorAll('thead th')][columnIndex].firstChild.innerText = "Video";
-      } else {
-        [...table.querySelectorAll('thead th')][columnIndex].innerText = "Video";
-      }
-      const rows = [...table.querySelectorAll('tbody tr')];
-
-      rows.forEach(row => {
-        const videoIdEl = row.children[columnIndex].firstChild;
-        const loadingEl = document.createElement('span');
-        loadingEl.classList.add("loading");
-        videoIdEl.appendChild(loadingEl);
-        const videoID = videoIdEl.innerText.trim();
-        if (videoID in videoIdAndRowElementObj) {
-          videoIdAndRowElementObj[videoID].push(videoIdEl);
-        } else {
-          videoIdAndRowElementObj[videoID] = [videoIdEl];
-        }
-      });
-      for (const [key, value] of Object.entries(videoIdAndRowElementObj)) {
-        callApi(key, value);
-      }
+  const columnIndex = headerKeys?.["VideoID"] ?? headerKeys?.["Videoid"];
+  if (headerKeys?.["VideoID"]) {
+    [...table.querySelectorAll("thead th")][columnIndex].firstChild.innerText = "Video";
+  } else {
+    [...table.querySelectorAll("thead th")][columnIndex].innerText = "Video";
+  }
+  rows.forEach(row => {
+    const videoIdEl = row.children[columnIndex].firstChild;
+    const loadingEl = document.createElement("span");
+    loadingEl.classList.add("loading");
+    videoIdEl.appendChild(loadingEl);
+    const videoID = videoIdEl.innerText.trim();
+    if (videoID in videoIdAndRowElementObj) {
+      videoIdAndRowElementObj[videoID].push(videoIdEl);
+    } else {
+      videoIdAndRowElementObj[videoID] = [videoIdEl];
     }
   });
+  for (const [key, value] of Object.entries(videoIdAndRowElementObj)) callApi(key, value);
 })();
 
 function callApi(videoID, videoIdElArray) {
   try {
     function removeLoading() {
       videoIdElArray.forEach(videoIdEl => {
-        videoIdEl.firstElementChild?.classList.remove('loading');
+        videoIdEl.firstElementChild?.classList.remove("loading");
       });
     }
     GM_xmlhttpRequest({
       url:            `https://www.youtube.com/oembed?url=youtube.com/watch?v=${videoID}&format=json`,
-      responseType:   'json',
+      responseType:   "json",
       timeout:        10000,
       onload:         (responseObject) => {
         // Inject the new name in place of the old video ID
-        const title = responseObject?.title
+        const title = responseObject?.title;
         if (title) {
           videoIdElArray.forEach(videoIdEl => {
             videoIdEl.innerText = title;
           });
         }
-        removeLoading()
+        removeLoading();
       },
       onerror: removeLoading(),
       ontimeout: removeLoading()

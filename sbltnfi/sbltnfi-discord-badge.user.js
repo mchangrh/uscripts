@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord
 // @namespace    mchang.name
-// @version      1.2.1
+// @version      1.2.2
 // @description  Indicates if a SB user is on discord
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -12,7 +12,7 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-const AUTH = "tlB7XLNX3b33nbnx01hw"
+const AUTH = "tlB7XLNX3b33nbnx01hw";
 
 function lookupUser (SBID, target) {
   GM_xmlhttpRequest({
@@ -20,45 +20,45 @@ function lookupUser (SBID, target) {
     url: `https://mongo.mchang.xyz/sb-vip/discord?auth=${AUTH}&sbID=${SBID}`,
     timeout: 1000,
     onload: (res) => addBadge(res.status === 200, target),
-    onerror: (res) => addBadge(false, target)
-  })
+    onerror: () => addBadge(false, target)
+  });
 }
 
-const discordBadge = document.createElement("img")
-discordBadge.src = "https://uscript.mchang.xyz/require/discord-badge.svg"
-discordBadge.style.height = "1em"
+const discordBadge = document.createElement("img");
+discordBadge.src = "https://uscript.mchang.xyz/require/discord-badge.svg";
+discordBadge.style.height = "1em";
 
 const spanElem = document.createElement("span");
-spanElem.title = "This user is on Discord"
-spanElem.id = "mchang-discord-badge"
-spanElem.classList = "badge bg-secondary ms-1"
-spanElem.appendChild(discordBadge)
+spanElem.title = "This user is on Discord";
+spanElem.id = "mchang-discord-badge";
+spanElem.classList = "badge bg-secondary ms-1";
+spanElem.appendChild(discordBadge);
 
 function addBadge (onDiscord, target) {
-  if (!onDiscord) return
-  const clone = spanElem.cloneNode(true)
-  if (target) target.after(clone)
+  if (!onDiscord) return;
+  const clone = spanElem.cloneNode(true);
+  if (target) target.after(clone);
   else {
     // scope to header
-    const header = document.querySelector("div.row.mt-2 > .col-auto > .list-group")
-    const username = header.children[0]
-    username.appendChild(clone)
+    const header = document.querySelector("div.row.mt-2 > .col-auto > .list-group");
+    const username = header.children[0];
+    username.appendChild(clone);
   }
 }
 
 function addBadges() {
-  const pathname = new URL(document.URL).pathname
+  const pathname = new URL(document.URL).pathname;
   if (pathname.includes("/userid/")) {
-    const SBID = pathname.split("/")[2]
-    lookupUser(SBID)
+    const SBID = pathname.split("/")[2];
+    lookupUser(SBID);
   } else {
     document.querySelectorAll("a[href^='/userid/']").forEach(elem => {
-      const SBID = elem.href.split("/")[4]
-      if (elem.querySelector("#mchang-discord-badge")) return
-      lookupUser(SBID, elem)
-    })
+      const SBID = elem.href.split("/")[4];
+      if (elem.querySelector("#mchang-discord-badge")) return;
+      lookupUser(SBID, elem);
+    });
   }
 }
 
-document.addEventListener("newSegments", addBadges)
-addBadges()
+document.addEventListener("newSegments", addBadges);
+addBadges();

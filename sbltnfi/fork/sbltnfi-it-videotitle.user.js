@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         Video Titles for sb.ltn.fi (with InnerTube)
 // @namespace    mchang.name
-// @version      2.0.6
+// @version      2.0.7
 // @description  Replaces the video ID with the video title in the 'Video ID' column.
 // @author       TheJzoli, michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @connect      www.youtube.com
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-it-videotitle.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-it-videotitle.user.js
+// @connect      www.youtube.com
+// @require      https://uscript.mchang.xyz/require/sbltnfi-helpers.js
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -15,7 +17,7 @@
 const videoIdAndRowElementObj = {};
 
 (function() {
-  'use strict';
+  "use strict";
   const animationCss = `
   .loading {
     display: inline-block;
@@ -40,34 +42,25 @@ const videoIdAndRowElementObj = {};
   }`;
   GM_addStyle(animationCss);
 
-  [...document.querySelectorAll('table.table')].forEach(table => {
-    const headers = [...table.querySelectorAll('thead th')].map(item => item.textContent.trim());
-    if (headers.includes('VideoID') || headers.includes('Videoid')) {
-      const columnIndex = headers.includes('VideoID') ? headers.indexOf('VideoID') : headers.indexOf('Videoid');
-      if (headers.includes('VideoID')) {
-        [...table.querySelectorAll('thead th')][columnIndex].firstChild.innerText = "Video";
-      } else {
-        [...table.querySelectorAll('thead th')][columnIndex].innerText = "Video";
-      }
-      const rows = [...table.querySelectorAll('tbody tr')];
-
-      rows.forEach(row => {
-        const videoIdEl = row.children[columnIndex].firstChild;
-        const loadingEl = document.createElement('span');
-        loadingEl.classList.add("loading");
-        videoIdEl.appendChild(loadingEl);
-        const videoID = videoIdEl.innerText.trim();
-        if (videoID in videoIdAndRowElementObj) {
-          videoIdAndRowElementObj[videoID].push(videoIdEl);
-        } else {
-          videoIdAndRowElementObj[videoID] = [videoIdEl];
-        }
-      });
-      for (const [key, value] of Object.entries(videoIdAndRowElementObj)) {
-        callApi(key, value);
-      }
+  const columnIndex = headerKeys?.["VideoID"] ?? headerKeys?.["Videoid"];
+  if (headerKeys?.["VideoID"]) {
+    [...table.querySelectorAll("thead th")][columnIndex].firstChild.innerText = "Video";
+  } else {
+    [...table.querySelectorAll("thead th")][columnIndex].innerText = "Video";
+  }
+  rows.forEach(row => {
+    const videoIdEl = row.children[columnIndex].firstChild;
+    const loadingEl = document.createElement("span");
+    loadingEl.classList.add("loading");
+    videoIdEl.appendChild(loadingEl);
+    const videoID = videoIdEl.innerText.trim();
+    if (videoID in videoIdAndRowElementObj) {
+      videoIdAndRowElementObj[videoID].push(videoIdEl);
+    } else {
+      videoIdAndRowElementObj[videoID] = [videoIdEl];
     }
   });
+  for (const [key, value] of Object.entries(videoIdAndRowElementObj)) callApi(key, value);
 })();
 
 function callApi(videoID, videoIdElArray) {
@@ -76,31 +69,31 @@ function callApi(videoID, videoIdElArray) {
       context: {
         client: {
           clientName: "WEB",
-          clientVersion: "2.20221215.04.01"
+          clientVersion: "2.20230327.07.00"
         }
       },
       videoId: videoID,
-    })
+    });
     function removeLoading() {
       videoIdElArray.forEach(videoIdEl => {
-        videoIdEl.firstElementChild?.classList.remove('loading');
+        videoIdEl.firstElementChild?.classList.remove("loading");
       });
     }
     GM_xmlhttpRequest({
-      method:         'POST',
+      method:         "POST",
       url:            "https://www.youtube.com/youtubei/v1/player",
-      responseType:   'json',
+      responseType:   "json",
       data:           itRequest,
       timeout:        10000,
       onload:         (responseObject) => {
         // Inject the new name in place of the old video ID
-        const title = responseObject?.response?.videoDetails?.title
+        const title = responseObject?.response?.videoDetails?.title;
         if (title) {
           videoIdElArray.forEach(videoIdEl => {
             videoIdEl.innerText = title;
           });
         }
-        removeLoading()
+        removeLoading();
       },
       onerror: removeLoading(),
       ontimeout: removeLoading()

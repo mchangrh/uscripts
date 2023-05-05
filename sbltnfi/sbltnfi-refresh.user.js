@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         sb.ltn.fi refresh segment
 // @namespace    mchang.name
-// @version      1.2.4
+// @version      1.2.5
 // @description  Refresh a single segment
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @icon         https://sb.ltn.fi/static/browser/logo.png
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-refresh.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-refresh.user.js
+// @require      https://uscript.mchang.xyz/require/sbltnfi-helpers.js
+// @connect      sponsor.ajay.app
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
@@ -20,19 +22,15 @@ function refreshRow(event) {
     responseType: "json",
     timeout: 10000,
     onload: (res) => updateRow(res.response[0], uuid),
-    onerror: (res) => updateRow(false, uuid),
-    ontimeout: (res) => updateRow(false, uuid)
+    onerror: () => updateRow(false, uuid),
+    ontimeout: () => updateRow(false, uuid)
   });
 }
 
 function createButtons() {
-  const table = document.querySelector("table.table");
-  const headers = [...table.querySelectorAll("thead th")].map((item) =>
-    item.textContent.trim()
-  );
-  const uuidColumnIndex = headers.indexOf("UUID");
-  if (uuidColumnIndex === -1) return;
-  table.querySelectorAll("tbody tr").forEach((row) => {
+  const uuidColumnIndex = headerKeys?.["UUID"];
+  if (!uuidColumnIndex) return;
+  rows.forEach((row) => {
     const cellEl = row.children[uuidColumnIndex];
     // check if refresh button exists
     if (cellEl.querySelector("#mchang_refresh")) return;
@@ -50,13 +48,9 @@ const oldChildrenFind = (children, textMatch) =>
   Array.from(children).find((elem) => elem.innerText == textMatch);
 
 function updateRow(data, uuid) {
-  const table = document.querySelector("table");
-  const headers = [...table.querySelectorAll("thead th")].map((item) =>
-    item.textContent.trim()
-  );
-  const uuidColumnIndex = headers.indexOf("UUID");
-  if (uuidColumnIndex === -1) return;
-  table.querySelectorAll("tbody tr").forEach((row) => {
+  const uuidColumnIndex = headerKeys?.["UUID"];
+  if (!uuidColumnIndex) return;
+  rows.forEach((row) => {
     const rowChildren = row.children;
     const cellEl = rowChildren[uuidColumnIndex];
     if (cellEl.querySelector("textarea").value === uuid) {
@@ -64,7 +58,7 @@ function updateRow(data, uuid) {
       cellEl.querySelector("#mchang_refresh").innerText = "✅";
       // update data
       // votes
-      const votesColumnIndex = headers.indexOf("Votes");
+      const votesColumnIndex = headerKeys?.["Votes"];
       const oldChildren = rowChildren[votesColumnIndex].children;
       let newVotes = data.votes;
       if (data.votes === -2 && !oldChildrenFind(oldChildren, "❌")) {
@@ -75,9 +69,9 @@ function updateRow(data, uuid) {
       }
       rowChildren[votesColumnIndex].childNodes[0].nodeValue = newVotes;
       // views
-      rowChildren[headers.indexOf("Views")].textContent = data.views;
+      rowChildren[headerKeys["Views"]].textContent = data.views;
       // workaround for colour categories
-      const categoryColumn = rowChildren[headers.indexOf("Category")];
+      const categoryColumn = rowChildren[headerKeys["Category"]];
       const categorySpan = categoryColumn.querySelector(".mruy_sbcc");
       if (categorySpan) {
         categorySpan.textContent = data.category;
@@ -85,7 +79,7 @@ function updateRow(data, uuid) {
         categoryColumn.innerText = data.category;
       }
       // shadowhidden
-      const shadowHiddenColumn = rowChildren[headers.indexOf("Shadowhidden")];
+      const shadowHiddenColumn = rowChildren[headerKeys["Shadowhidden"]];
       if (data.shadowHidden) {
         shadowHiddenColumn.innerText = "❌";
       }
@@ -93,8 +87,5 @@ function updateRow(data, uuid) {
   });
 }
 
-(function () {
-  "use strict";
-  createButtons();
-  document.addEventListener("newSegments", (event) => createButtons());
-})();
+createButtons();
+document.addEventListener("newSegments", () => createButtons());

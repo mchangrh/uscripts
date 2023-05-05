@@ -11,5 +11,7 @@ module.exports = {
     "no-undef": "off",
     "semi": 1,
     "quotes": [1, "double"],
+    "no-inner-declarations": "off",
+    "no-unused-vars": "off",
   }
 }
