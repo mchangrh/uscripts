@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add milliseconds to YouTube time
 // @namespace    mchang.name
-// @version      1.1.3
+// @version      1.1.4
 // @description  add exact milliseconds to YouTube time
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -11,6 +11,8 @@
 // @require      https://uscript.mchang.xyz/require/wfke.js
 // @grant        none
 // ==/UserScript==
+
+// REPLACED BY https://uscript.mchang.xyz/yt/yt-timecode.user.js
 
 function setMs() {
   if (document.getElementById("mchang-ytms") === null) {

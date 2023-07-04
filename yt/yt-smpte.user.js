@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add SMTPE format to YouTube time
 // @namespace    mchang.name
-// @version      1.0.3
+// @version      1.0.4
 // @description  Add frames to YouTube time
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -11,6 +11,8 @@
 // @require      https://uscript.mchang.xyz/require/wfke.js
 // @grant        none
 // ==/UserScript==
+
+// REPLACED BY https://uscript.mchang.xyz/yt/yt-timecode.user.js
 
 let smpte = true;
 let framerate;
