@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html><head>
+  <title>yt-timecode config</title>
+  <style>
+    body {
+      background: #111;
+      color: #ddd;
+      font-size: 1em;
+      font-family: monospace;
+      margin: 1em 0;
+    }
+  </style>
+</head>
+<body>
+  <pre id="placeholder">yt-timecode not found</pre>
+  <div id="config" class="hero" style="min-height: 98vmin">
+  <fieldset>
+    <legend>Timecode Format:</legend>
+    <div>
+      <input type="radio" name="timecode" value="smpte" id="smpte">
+      <label for="smpte">SMPTE - HH:MM:SS;FF</label>
+    </div>
+    <div>
+      <input type="radio" name="timecode" value="frames" id="frames">
+      <label for="frames">Total Frames - HH:MM:SS (FF)</label>
+    </div>
+    <div>
+      <input type="radio" name="timecode" value="ms" id="ms">
+      <label for="ms">ms - HH:MM:SS.MS</label>
+    </div>
+  </fieldset>
+</div>
+
+</body></html>
