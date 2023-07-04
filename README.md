@@ -18,9 +18,6 @@ A/D for back/forth
 [`yt-no-notif.user.js`](https://uscript.mchang.xyz/yt/yt-no-notif.user.js)
 > Remove notification count from title
 
-[`yt-mstime.user.js`](https://uscript.mchang.xyz/yt/yt-mstime.user.js)
-> Add milliseconds to YT end time
-
 [`yt-setquality.user.js`](https://uscript.mchang.xyz/yt/yt-setquality.user.js)
 > Force YouTube Video quality  
 > [config page](https://uscript.mchang.xyz/config/setquality)
@@ -31,12 +28,14 @@ A/D for back/forth
 - works on mobile
 - intercepts navigation request, not response
 
+[`yt-timecode.user.js`](https://uscript.mchang.xyz/yt/yt-timecode.user.js)
+> Add SMPTE, .ms or total frames to current time or duration (goes well with `yt-frames`)  
+> [config page](https://uscript.mchang.xyz/config/timecode)  
+> replaces `yt-mstime`, `yt-smpte`
+
 [`yt-persist-ctrl.user.js`](https://uscript.mchang.xyz/yt/yt-persist-ctrl.user.js)
 > Persist YT Controls
 The preview bar does not activate despite the controls being persisted, the current time indicator will be out of date
-
-[`yt-smpte.user.js`](https://uscript.mchang.xyz/yt/yt-smpte.user.js)
-> Add SMPTE timecode (frames) to YT or optionally display current time in frames (goes well with `yt-frames`)
 
 [`yt-warn-postlive.user.js`](https://uscript.mchang.xyz/yt/yt-warn-postlive.user.js)
 > Warn if video is post-live manifestless
