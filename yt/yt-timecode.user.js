@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Additional YouTube timecode formats
 // @namespace    mchang.name
-// @version      1.0.0
+// @version      1.0.1
 // @description  Add opptional timecodes/ indicator to youtube time or duration
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -30,7 +30,7 @@ function getFramerate() {
 
 // ms => frames
 const convertToFrame = (ms) => Math.floor(Number("0."+ms) / (1/framerate));
-const sbRoundTime = (time) => Math.round((time + Number.EPSILON) * 1000) / 1000;
+const sbRoundTime = (time) => (Math.round((time + Number.EPSILON) * 1000) / 1000).toFixed(3);
 
 function getFrames(time) {
   // split into sec, ms
@@ -46,7 +46,7 @@ function updateTc() {
   const time = sbRoundTime(video.currentTime);
   const target = document.querySelector("#mchang-yttc-current");
   if (config.ms) {
-    const ms = (""+time).split(".").pop() ?? 0;
+    const ms = (""+time).split(".").pop() ?? "000";
     target.textContent = "."+ms;
   } else {
     const { total, ms } = getFrames(time);
