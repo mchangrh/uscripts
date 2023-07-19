@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Additional YouTube timecode formats
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      1.0.2
 // @description  Add opptional timecodes/ indicator to youtube time or duration
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -41,6 +41,12 @@ function getFrames(time) {
   return { total: secFrame + msFrame, ms: msFrame };
 }
 
+function resetLoop() {
+  clearInterval(playingLoop);
+  // recreate duration timecode if needed
+  createTimecodes(video.duration, "duration", config);
+}
+
 function updateTc() {
   // use roundedTime from SponsorBlock
   const time = sbRoundTime(video.currentTime);
@@ -63,7 +69,8 @@ function createTimecodes(time, selector, config) {
   const target = document.querySelector(`.${targetClass}`);
   const spanEl = document.createElement("span");
   const id = `mchang-yttc-${selector}`;
-  if (document.getElementById(id)) return;
+  const existing = document.getElementById(id);
+  if (existing && !Number.isNaN(existing.value)) return;
   spanEl.className = targetClass;
   spanEl.id = id;
   // modify content based on flags
@@ -98,7 +105,7 @@ function mainLoop() {
   createTimecodes(video.duration, "duration", config);
   createTimecodes(sbRoundTime(video.currentTime), "current", config);
   video.addEventListener("seeked", updateTc);
-  video.addEventListener("pause", updateTc);
+  video.addEventListener("pause", resetLoop);
   video.addEventListener("play", startPlayingLoop, true);
 }
 
