@@ -20,7 +20,8 @@
     "eslint-plugin-promise": "^6.1.1"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "private": true
 }

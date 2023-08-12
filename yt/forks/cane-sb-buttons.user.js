@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube SB Buttons
 // @namespace    cane-sb-buttons
-// @version      1.0.7
+// @version      1.0.8
 // @description  Useful buttons/redirects for SponsorBlock moderation. No need for bookmarklets!
 // @author       michael mchang.name, by cane, original by Deedit
 // @match        https://www.youtube.com/*
@@ -24,27 +24,38 @@ const youtube = "https://youtu.be/";
 const sbc_lock = "https://mruy.github.io/sponsorBlockControl-sveltekit/lockcategories/?videoID=";
 const sbc_browse = "https://mruy.github.io/sponsorBlockControl-sveltekit/browse/?videoID=";
 const sbb_browse = "https://sb.ltn.fi/video/";
+const dab_browse = "https://dearrow.minibomba.pro/video_id/";
 
 const buttons = { // if you want to disable certain buttons, simply change "true" to "false"
   "playlist": {
     enabled: true,
+    title: "Open video outside of playlist",
     text: "Playlist",
     url: youtube
   },
   "sbc_lock": {
     enabled: true,
+    title: "Lock categories using SBC",
     text: "Lock",
     url: sbc_lock
   },
   "sbc_browse": {
     enabled: true,
+    title: "Browse segments using SBC",
     text: "SBC Browse",
     url: sbc_browse
   },
   "sbb": {
     enabled: true,
+    title: "Browse segments using SBB",
     text: "SBB",
     url: sbb_browse
+  },
+  "dab": {
+    enabled: true,
+    title: "Browse branding using DAB",
+    text: "DAB",
+    url: dab_browse
   }
 };
 
