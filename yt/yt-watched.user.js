@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Flag Watched
 // @namespace    mchang.name
-// @version      1.1.1
+// @version      1.1.2
 // @description  Flag watched videeos
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -11,7 +11,7 @@
 // @run-at       document-start
 // @grant        GM_addStyle
 // ==/UserScript==
-
+/* eslint-disable no-useless-escape */
 
 const css = `
 ytd-thumbnail:has(#progress[style="width: 100%;"])>#thumbnail {

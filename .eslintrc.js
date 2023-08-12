@@ -14,4 +14,4 @@ module.exports = {
     "no-inner-declarations": "off",
     "no-unused-vars": "off",
   }
-}
+};
