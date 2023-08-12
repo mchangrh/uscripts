@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Additional YouTube timecode formats
 // @namespace    mchang.name
-// @version      1.0.2
+// @version      1.0.3
 // @description  Add opptional timecodes/ indicator to youtube time or duration
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -19,7 +19,7 @@ let video;
 const config = GM_getValue("config", { smpte: true });
 
 function getFramerate() {
-  const player = document.querySelector("#movie_player");
+  const player = document.getElementById("movie_player");
   const fps = player
     .getStatsForNerds()
     .resolution
@@ -30,6 +30,7 @@ function getFramerate() {
 
 // ms => frames
 const convertToFrame = (ms) => Math.floor(Number("0."+ms) / (1/framerate));
+// use sb rounded time for consistency with extension
 const sbRoundTime = (time) => (Math.round((time + Number.EPSILON) * 1000) / 1000).toFixed(3);
 
 function getFrames(time) {
@@ -44,23 +45,19 @@ function getFrames(time) {
 function resetLoop() {
   clearInterval(playingLoop);
   // recreate duration timecode if needed
-  createTimecodes(video.duration, "duration", config);
+  updateDurationTc();
+  updateCurrentTc();
 }
 
-function updateTc() {
-  // use roundedTime from SponsorBlock
-  const time = sbRoundTime(video.currentTime);
-  const target = document.querySelector("#mchang-yttc-current");
+function updateTc(time, element) {
   if (config.ms) {
     const ms = (""+time).split(".").pop() ?? "000";
-    target.textContent = "."+ms;
+    element.textContent = "."+ms;
   } else {
     const { total, ms } = getFrames(time);
-    if (config.smpte) {
-      target.textContent = (""+ms).padStart(2, "0");
-    } else if (config.frames) {
-      target.textContent = ` (${total})`;
-    }
+    element.textContent = config?.smpte
+      ? (""+ms).padStart(2, "0")
+      : ` (${total})`;
   }
 }
 
@@ -70,33 +67,30 @@ function createTimecodes(time, selector, config) {
   const spanEl = document.createElement("span");
   const id = `mchang-yttc-${selector}`;
   const existing = document.getElementById(id);
-  if (existing && !Number.isNaN(existing.value)) return;
+  if (existing) return;
   spanEl.className = targetClass;
   spanEl.id = id;
   // modify content based on flags
-  if (config.ms) {
-    const ms = (""+time).split(".").pop() ?? 0;
-    spanEl.textContent = "."+ms;
-    target.after(spanEl);
-  } else {
-    const { total, ms } = getFrames(time);
-    if (config.smpte) {
-      spanEl.textContent = (""+ms).padStart(2, "0");
-      // add ; seperator
-      const seperator = document.createElement("span");
-      seperator.className = "ytp-time-separator";
-      seperator.innerText = ";";
-      // add to selectors
-      target.after(seperator);
-      seperator.after(spanEl);
-    } else if (config.frames) {
-      spanEl.textContent = ` (${total})`;
-      target.after(spanEl);
-    }
+  if (config.ms || config.frames) target.after(spanEl);
+  else if (config.smpte) {
+    // add ; seperator
+    const seperator = document.createElement("span");
+    seperator.className = "ytp-time-separator";
+    seperator.innerText = ";";
+    // add to selectors
+    target.after(seperator);
+    seperator.after(spanEl);
   }
+  updateTc(time, spanEl);
 }
 
-const playingLoop = () => { if (!video.paused) updateTc(); };
+const updateCurrentTc = () => updateTc(sbRoundTime(video.currentTime), document.getElementById("mchang-yttc-current"));
+const updateDurationTc = () => {
+  const target = document.querySelector("#mchang-yttc-duration");
+  if (!target) createTimecodes(video.duration, "duration", config);
+  else if (!isFinite(target?.textContent)) updateTc(video.duration, target);
+};
+const playingLoop = () => { if (!video.paused) updateCurrentTc(); };
 const startPlayingLoop = () => setInterval(playingLoop, 10000); // update every 10s
 
 function mainLoop() {
@@ -104,8 +98,8 @@ function mainLoop() {
   framerate = getFramerate();
   createTimecodes(video.duration, "duration", config);
   createTimecodes(sbRoundTime(video.currentTime), "current", config);
-  video.addEventListener("seeked", updateTc);
-  video.addEventListener("pause", resetLoop);
+  video.addEventListener("seeked", updateCurrentTc);
+  video.addEventListener("pause", updateDurationTc);
   video.addEventListener("play", startPlayingLoop, true);
 }
 
