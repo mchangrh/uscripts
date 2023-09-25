@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord
 // @namespace    mchang.name
-// @version      1.2.2
+// @version      1.2.3
 // @description  Indicates if a SB user is on discord
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
