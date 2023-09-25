@@ -54,7 +54,7 @@ function addBadges() {
   } else {
     document.querySelectorAll("a[href^='/userid/']").forEach(elem => {
       const SBID = elem.href.split("/")[4];
-      if (elem.querySelector("#mchang-discord-badge")) return;
+      if (elem.nextSibling?.matches("#mchang-discord-badge")) return;
       lookupUser(SBID, elem);
     });
   }
