@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi export as #segments
 // @namespace    mchang.name
-// @version      1.0.8
+// @version      1.0.9
 // @description  Export sbltnfi segments into loadable URLs
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -15,7 +15,6 @@
 
 const videoRegex = new RegExp(/(?:(?:video\/)|(?:videoid=))([0-9A-Za-z_-]{11})/);
 const findVideoID = (str) => str.match(videoRegex)?.[1];
-const sanitize = (idx) => row.children[idx].firstChild.textContent.trim();
 
 let videoId = findVideoID(window.location.href);
 
@@ -25,6 +24,7 @@ function create() {
   const actionTypeColumnIndex = headerKeys?.["Action"];
   const videoIdColumnIndex = headerKeys?.["VideoID"];
   rows.forEach(row => {
+    const sanitize = (idx) => row.children[idx].firstChild.textContent.trim();
     const appendTo = row.children[0];
     if (appendTo.querySelector(".export-segment")) return;
     if (videoIdColumnIndex) videoId = sanitize(videoIdColumnIndex);
