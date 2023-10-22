@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord
 // @namespace    mchang.name
-// @version      1.2.2
+// @version      1.2.3
 // @description  Indicates if a SB user is on discord
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -54,7 +54,7 @@ function addBadges() {
   } else {
     document.querySelectorAll("a[href^='/userid/']").forEach(elem => {
       const SBID = elem.href.split("/")[4];
-      if (elem.querySelector("#mchang-discord-badge")) return;
+      if (elem.nextSibling?.matches("#mchang-discord-badge")) return;
       lookupUser(SBID, elem);
     });
   }
