@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         Add seek precision to YouTube
 // @namespace    mchang.name
-// @version      1.0.3
+// @version      1.1.0
 // @description  Add additional seeking options on YouTube
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-moreseek.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/yt/yt-moreseek.user.js
+// @require      https://uscript.mchang.xyz/require/wfke-el.js
 // @grant        none
 // ==/UserScript==
 
@@ -35,5 +36,8 @@ function listenKey(e) {
   }
 }
 
-const player = document.querySelector("#movie_player");
-document.addEventListener("keydown", listenKey);
+let player;
+wfke("#movie_player", (el) => {
+  player = el;
+  document.addEventListener("keydown", listenKey);
+});
