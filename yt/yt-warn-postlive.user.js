@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Warn on Post-Live Manifestless
 // @namespace    mchang.name
-// @version      1.1.4
+// @version      1.1.5
 // @description  adds a big red warning to the top of the screen when video is post-live manifestless
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -42,14 +42,17 @@ const checkRequired = () => {
 const awaitMasthead = () => wfke("ytd-masthead#masthead", checkRequired);
 
 const reset = () => {
-  document.getElementById("postlive-warning")?.remove;
+  document.getElementById("postlive-warning")?.remove();
   checkRequired();
 };
 
 const hookDetail = (e) => {
+  // check if on /video page
+  if (!location.pathname.startsWith("/watch")) return;
   playerDetail = e.detail;
   awaitMasthead();
 };
 
-document.addEventListener("yt-navigate-finish", (e) => reset() );
+document.addEventListener("yt-navigate-finish", (e) => reset());
+document.addEventListener("yt-player-start", (e) => reset());
 document.addEventListener("yt-player-updated", hookDetail);

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Warn on Required Segments
 // @namespace    mchang.name
-// @version      1.1.3
+// @version      1.1.4
 // @description  adds a big red warning to the top of the screen when requiredSegment is present
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -31,7 +31,7 @@ function setupButton(segmentID) {
 }
 
 const reset = () => {
-  document.getElementById("reqseg-warning")?.remove;
+  document.getElementById("reqseg-warning")?.remove();
   checkRequired();
 };
 
@@ -46,4 +46,5 @@ function checkRequired() {
 }
 
 wfke("ytd-masthead#masthead", checkRequired);
-document.body.addEventListener("yt-navigate-finish", (e) => reset());
+document.addEventListener("yt-navigate-finish", (e) => reset());
+document.addEventListener("yt-player-start", (e) => reset());
