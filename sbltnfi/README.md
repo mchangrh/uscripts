@@ -9,6 +9,9 @@
 [`sbltnfi-imprecise-times.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-imprecise-times.user.js)
 > Removes trailing zeros from start, end and length times
 
+[`sbltnfi-input-page.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-input-page.user.js)
+> Replace ellipsis in navigation with textbox for page number
+
 [`sbltnfi-preset-replace.user.js`](https://uscript.mchang.xyz/sbltnfi/sbltnfi-preset-replace.user.js)
 > Replaces or redirct all sb.ltn.fi links to be pre-loaded with filters
 
