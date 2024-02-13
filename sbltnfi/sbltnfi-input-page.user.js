@@ -6,8 +6,8 @@
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @icon         https://sb.ltn.fi/static/browser/logo.png
-// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-discord-badge.user.js
-// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-discord-badge.user.js
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-input-page.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-input-page.user.js
 // ==/UserScript==
 
 function replaceElipsis() {
