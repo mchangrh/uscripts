@@ -1,0 +1,10 @@
+Any code of mine that is not a fork or derivative is hereby licenced under the MIT License https://spdx.org/licenses/MIT.html
+
+Notable outliers to this include
+{
+    "require/discord-badge": "https://discord.com/branding",
+    "sbltnfi/forks/sbltnfi-clickable-starttime-fork": "https://gist.github.com/MRuy/ca74d6a359c487d760f4a698e76fb0d6",
+    "sbltnfi/forks/sbltnfi-it-videotitle.user": "https://gist.github.com/TheJzoli/8a4cd979d433b7359cdf61c238bc0181",
+    "sbltnfi/forks/sbltnfi-oembed-videotitle.user": "https://gist.github.com/TheJzoli/8a4cd979d433b7359cdf61c238bc0181",
+    "yt/forks/cane-sb-buttons.user": "https://gist.github.com/mlnrDev/b0949e9d3f2ba312b7523579976c9f31"
+}

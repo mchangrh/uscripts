@@ -7,7 +7,7 @@
     "url": "git+https://github.com/mchangrh/uscripts.git"
   },
   "author": "Michael Chang <michael@mchang.name>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mchangrh/uscripts/issues"
   },
