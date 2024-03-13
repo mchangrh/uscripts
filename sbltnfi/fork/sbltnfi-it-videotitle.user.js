@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Titles for sb.ltn.fi (with InnerTube)
 // @namespace    mchang.name
-// @version      2.0.7
+// @version      3.1.0
 // @description  Replaces the video ID with the video title in the 'Video ID' column.
 // @author       TheJzoli, michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -10,6 +10,8 @@
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-it-videotitle.user.js
 // @connect      www.youtube.com
 // @require      https://uscript.mchang.xyz/require/sbltnfi-helpers.js
+// @require      https://uscript.mchang.xyz/sbltnfi/videotitle/innertube.js
+// @connect      www.youtube.com
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -43,6 +45,7 @@ const videoIdAndRowElementObj = {};
   GM_addStyle(animationCss);
 
   const columnIndex = headerKeys?.["VideoID"] ?? headerKeys?.["Videoid"];
+  const table = document.querySelector("table.table");
   if (headerKeys?.["VideoID"]) {
     [...table.querySelectorAll("thead th")][columnIndex].firstChild.innerText = "Video";
   } else {
@@ -61,44 +64,19 @@ const videoIdAndRowElementObj = {};
     }
   });
   for (const [key, value] of Object.entries(videoIdAndRowElementObj)) callApi(key, value);
-})();
 
-function callApi(videoID, videoIdElArray) {
-  try {
-    const itRequest = JSON.stringify({
-      context: {
-        client: {
-          clientName: "WEB",
-          clientVersion: "2.20230327.07.00"
-        }
-      },
-      videoId: videoID,
-    });
+  function callApi(videoID, videoIdElArray) {
     function removeLoading() {
       videoIdElArray.forEach(videoIdEl => {
         videoIdEl.firstElementChild?.classList.remove("loading");
       });
     }
-    GM_xmlhttpRequest({
-      method:         "POST",
-      url:            "https://www.youtube.com/youtubei/v1/player",
-      responseType:   "json",
-      data:           itRequest,
-      timeout:        10000,
-      onload:         (responseObject) => {
-        // Inject the new name in place of the old video ID
-        const title = responseObject?.response?.videoDetails?.title;
+    getTitle(videoID)
+      .then(title => {
         if (title) {
-          videoIdElArray.forEach(videoIdEl => {
-            videoIdEl.innerText = title;
-          });
+          videoIdElArray.forEach(videoIdEl => videoIdEl.innerText = title);
         }
         removeLoading();
-      },
-      onerror: removeLoading(),
-      ontimeout: removeLoading()
-    });
-  } catch (error) {
-    console.error(error);
+      }).catch(() => removeLoading());
   }
-}
+})();

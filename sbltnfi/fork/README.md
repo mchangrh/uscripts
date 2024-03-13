@@ -8,3 +8,6 @@
 
 [`sbltnfi-oembed-videotitle.user.js`](https://uscript.mchang.xyz/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js)
 > Fork of [TheJzoli's Script](https://gist.github.com/TheJzoli/8a4cd979d433b7359cdf61c238bc0181) using OEmbed API instead of public invidious instances
+
+[`sbltnfi-dearrow-videotitle.user.js`](https://uscript.mchang.xyz/sbltnfi/fork/sbltnfi-dearrow-videotitle.user.js)
+> Fork of [TheJzoli's Script](https://gist.github.com/TheJzoli/8a4cd979d433b7359cdf61c238bc0181) using DeArrow API instead of public invidious instances

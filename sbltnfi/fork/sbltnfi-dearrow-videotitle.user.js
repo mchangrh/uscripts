@@ -1,19 +1,33 @@
 // ==UserScript==
-// @name         Video Titles for sb.ltn.fi (with OEmbed)
+// @name         Video Titles for sb.ltn.fi (with DeArrow)
 // @namespace    mchang.name
 // @version      3.1.0
 // @description  Replaces the video ID with the video title in the 'Video ID' column.
 // @author       TheJzoli, michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @connect      www.youtube.com
-// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js
-// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-dearrow-videotitle.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-dearrow-videotitle.user.js
 // @require      https://uscript.mchang.xyz/require/sbltnfi-helpers.js
-// @require      https://uscript.mchang.xyz/sbltnfi/videotitle/oembed.js
+// @require      https://uscript.mchang.xyz/sbltnfi/videotitle/dearrow.js
 // @connect      www.youtube.com
+// @connect      sponsor.ajay.app
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // ==/UserScript==
+
+const getTitle = async (videoID) => {
+  const dearrowTitle = await GM_xmlhttpRequestPromise(`https://sponsor.ajay.app/api/branding?videoID=${videoID}`, {
+      responseType: "json",
+      timeout: 10000,
+    });
+  const oembedTitle = await GM_xmlhttpRequestPromise(`https://www.youtube.com/oembed?url=youtube.com/watch?v=${videoID}&format=json`, {
+      responseType: "json",
+      timeout: 10000,
+    });
+  const title = dearrowTitle?.response?.titles?.[0]?.title || oembedTitle?.response?.title;
+  return title.replace(/\s>/, " ").trim();
+};
 
 const videoIdAndRowElementObj = {};
 
