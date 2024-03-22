@@ -98,5 +98,11 @@ The preview bar does not activate despite the controls being persisted, the curr
 > Fork of [TheJzoli's Script](https://gist.github.com/TheJzoli/8a4cd979d433b7359cdf61c238bc0181) using DeArrow API instead of public invidious instances
 </details>
 
+<details><summary><a href=dab#readme>DeArrow Browser</a></summary>
+
+[`dab-sb-stats.user.js`](https://uscript.mchang.xyz/dab/dab-sb-stats.user.js)
+> Adds SponsorBlock stats to DAB user block
+</details>
+
 
 [yt-neuter scripts](https://github.com/mchangrh/yt-neuter/tree/main/userscripts)
