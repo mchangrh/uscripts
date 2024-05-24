@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sb.ltn.fi shortened sb.mchang.xyz
 // @namespace    mchang.name
-// @version      1.0.1
+// @version      1.0.2
 // @description  Generate shortened sb.mchang.xyz link (/video/partialHash)
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
@@ -28,7 +28,7 @@ function createButtons() {
   rows.forEach((row) => {
     const cellEl = row.children[uuidColumnIndex];
     if (cellEl.querySelector("#mchang_shortsb")) return;
-    if (videoIdColumnIndex != -1) {
+    if (!videoId) {
       videoId = row.children[videoIdColumnIndex].firstChild.textContent.trim();
     }
     if (!videoId) return;
