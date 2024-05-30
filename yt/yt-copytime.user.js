@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT copy timestamp
 // @namespace    mchang.name
-// @version      0.0.1
+// @version      0.0.2
 // @description  Copy exact timestamp on youtube
 // @author       michael mchang.name
 // @match        https://www.youtube.com/*
@@ -13,8 +13,8 @@
 
 // copy timestamp
 const copyTime = () =>
-    navigator.clipboard.writeText(document.querySelector("video").currentTime);
+    navigator.clipboard.writeText("0:"+document.querySelector("video").currentTime);
 
 window.onkeyup = e => {
-    if (e.key == "\\" && e.ctrlKey) copyTime();
+    if (e.key == "/" && e.ctrlKey) copyTime();
 };
