@@ -7,5 +7,5 @@ const getTitle = async (videoID) => {
       responseType: "json",
       timeout: 10000,
     });
-  return dearrowTitle?.response?.titles?.[0]?.title || oembedTitle?.response?.title;
+  return dearrowTitle?.response?.titles?.[0]?.title?.replace(/(^|\s)>(\S)/g, "$1$2")?.trim() || oembedTitle?.response?.title;
 };
