@@ -6,8 +6,8 @@
 // @author       TheJzoli, michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @connect      www.youtube.com
-// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js
-// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-oembed-videotitle.user.js
+// @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-videotitle-unlisted.user.js
+// @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/fork/sbltnfi-videotitle-unlisted.user.js
 // @require      https://uscript.mchang.xyz/require/sbltnfi-helpers.js
 // @require      https://uscript.mchang.xyz/sbltnfi/videotitle/oembed.js
 // @connect      www.youtube.com
