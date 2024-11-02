@@ -8,7 +8,7 @@ const getTitle = async (videoID) => {
     },
     videoId: videoID,
   });
-  GM_xmlhttpRequestPromise("https://www.youtube.com/youtubei/v1/player", {
+  return GM_xmlhttpRequestPromise("https://www.youtube.com/youtubei/v1/player", {
       method: "POST",
       responseType: "json",
       data: itRequest,
