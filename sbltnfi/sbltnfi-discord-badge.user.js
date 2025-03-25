@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         sb.ltn.fi discord
 // @namespace    mchang.name
-// @version      1.2.3
+// @version      1.2.4
 // @description  Indicates if a SB user is on discord
 // @author       michael mchang.name
 // @match        https://sb.ltn.fi/*
 // @icon         https://uscript.mchang.xyz/require/discord-badge.png
 // @updateURL    https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-discord-badge.user.js
 // @downloadURL  https://raw.githubusercontent.com/mchangrh/uscripts/main/sbltnfi/sbltnfi-discord-badge.user.js
-// @connect      mongo.mchang.xyz
+// @connect      mongo.ash.mmpc.me
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
@@ -17,7 +17,7 @@ const AUTH = "tlB7XLNX3b33nbnx01hw";
 function lookupUser (SBID, target) {
   GM_xmlhttpRequest({
     method: "GET",
-    url: `https://mongo.mchang.xyz/sb-vip/discord?auth=${AUTH}&sbID=${SBID}`,
+    url: `https://mongo.ash.mmpc.me/sb-vip/discord?auth=${AUTH}&sbID=${SBID}`,
     timeout: 1000,
     onload: (res) => addBadge(res.status === 200, target),
     onerror: () => addBadge(false, target)
